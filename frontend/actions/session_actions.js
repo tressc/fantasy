@@ -19,7 +19,7 @@ export const removeErrors = () => {
 
 // TODO: deconstruct user data from jbuilder
 
-const receiveCurrentUser = (user) => {
+const receiveCurrentUser = ({ user }) => {
   return {
     type: RECEIVE_CURRENT_USER,
     user
