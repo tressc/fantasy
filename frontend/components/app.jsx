@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
+import SignUpFormContainer from './session/signup_form_container';
 
 const App = () => {
   return (
-    <div>
-      <h1>I'm the app</h1>
-    </div>
+    <Switch>
+      <AuthRoute exact path='/signup' component= { SignUpFormContainer} />
+    </Switch>
   );
 };
 
