@@ -2,12 +2,18 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 import SignUpFormContainer from './session/signup_form_container';
+import IndexContainer from './index/index_container';
+
+// TODO: backticks? also protect all non-login/signup routes
 
 const App = () => {
   return (
-    <Switch>
-      <AuthRoute exact path='/signup' component= { SignUpFormContainer} />
-    </Switch>
+    <div>
+      <Switch>
+        <AuthRoute exact path='/signup' component= { SignUpFormContainer} />
+      </Switch>
+      <ProtectedRoute exact path={'/'} component={ IndexContainer } />
+    </div>
   );
 };
 
