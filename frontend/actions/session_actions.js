@@ -37,6 +37,14 @@ export const logout = () => (dispatch) => {
   return APIUTil.logout().then(() => dispatch(logoutUser()));
 };
 
+export const signup = (user) => (dispatch) => {
+  return APIUTil.signUp(user).then(u => {
+    dispatch(receiveCurrentUser(u));
+  }, errors => {
+    dispatch(receiveErrors(errors.responseJSON));
+  });
+};
+
 export const login = (user) => (dispatch) => {
   return APIUTil.logIn(user).then(u => {
     dispatch(receiveCurrentUser(u));
