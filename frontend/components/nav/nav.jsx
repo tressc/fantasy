@@ -1,18 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Nav from './nav';
-import { logout } from '../../actions/session_actions';
+import { Link } from 'react-router-dom';
 
-const msp = (state) => {
-  return {
-    currentUser: state.session.currentUser
-  };
-};
+class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-const mdp = (dispatch) => {
-  return {
-    logout: user => dispatch(logout(user))
-  };
-};
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.logout}>
+          log out
+        </button>
+      </div>
+    );
+  }
+}
 
-export default connect(msp, mdp)(Nav);
+export default Nav;

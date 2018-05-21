@@ -34,7 +34,7 @@ const receiveErrors = (errors) => {
 };
 
 export const logout = () => (dispatch) => {
-  return APIUTil.logout().then(() => dispatch(logoutUser()));
+  return APIUTil.logOut().then(() => dispatch(logoutUser()));
 };
 
 export const signup = (user) => (dispatch) => {
