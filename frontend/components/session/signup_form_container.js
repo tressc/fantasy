@@ -8,7 +8,7 @@ import { signup, removeErrors, login } from '../../actions/session_actions';
 const msp = (state) => {
   return {
     currentUser: state.session.currentUser,
-    // errors: state.errors.sessions
+    // errors: state.errors.session
   };
 };
 
