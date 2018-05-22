@@ -27,5 +27,20 @@ class LoginForm extends React.Component {
     this.props.login({user: user});
   }
 
+  render() {
 
+    // TODO: map errors to li's
+
+    return (
+      <div>
+        <form>
+          <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
+          <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
+          <input type='submit' value='log in'></input>
+        </form>
+      </div>
+    );
+  }
 }
+
+export default withRouter(LoginForm);

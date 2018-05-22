@@ -32,13 +32,13 @@ class SignUpForm extends React.Component {
 
   render() {
 
-    // TODO: map errors to lis
+    // TODO: map errors to li's
 
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder='Username' type='text' value={this.state.username} onChange={this.update('username')}></input>
-          <input placeholder='Password' type='password' value={this.state.password} onChange={this.update('password')}></input>
+          <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
+          <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
           <input type='submit' value='sign up'></input>
         </form>
       </div>
