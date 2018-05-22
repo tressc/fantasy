@@ -38,6 +38,7 @@ class LoginForm extends React.Component {
           <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
           <input type='submit' value='log in'></input>
         </form>
+        <span>don't have an account? <Link to='/signup'>Sign up</Link></span>
       </div>
     );
   }
