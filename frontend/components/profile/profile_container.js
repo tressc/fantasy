@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './profile';
-import { fetchUser } from '../../actions/ui_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 const msp = (state, ownProps) => {
-  const user = state.entities.users[ownProps.match.params.id];
+  const userId = ownProps.match.params.id;
   const currentUser = state.session.currentUser;
   return {
-    user,
+    userId,
     currentUser
   };
 };
