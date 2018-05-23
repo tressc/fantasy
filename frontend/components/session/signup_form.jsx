@@ -9,12 +9,13 @@ class SignUpForm extends React.Component {
       username: '',
       password: ''
     };
-    // TODO: bind methods
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // TODO: fill in methods
+  componentDidMount() {
+    this.props.removeErrors();
+  }
 
   update(field) {
     return (event) => {
@@ -32,7 +33,11 @@ class SignUpForm extends React.Component {
 
   render() {
 
-    // TODO: map errors to li's
+    const errors = this.props.errors.map(error => {
+      return (
+        <li>{ error.toLowerCase() }</li>
+      );
+    });
 
     return (
       <div>
@@ -42,6 +47,9 @@ class SignUpForm extends React.Component {
           <input type='submit' value='sign up'></input>
         </form>
         <span>already have an account? <Link to='/login'>log in</Link></span>
+        <ul>
+          { errors }
+        </ul>
       </div>
     );
   }

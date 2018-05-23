@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import SignUpForm from './signup_form';
 import { signup, removeErrors, login } from '../../actions/session_actions';
 
-// TODO: add errors reducer
-
 const msp = (state) => {
   return {
     currentUser: state.session.currentUser,
-    // errors: state.errors.session
+    errors: state.errors.session
   };
 };
 

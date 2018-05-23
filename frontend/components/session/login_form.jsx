@@ -13,6 +13,10 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.removeErrors();
+  }
+
   update(field) {
     return (event) => {
       this.setState({
@@ -29,7 +33,11 @@ class LoginForm extends React.Component {
 
   render() {
 
-    // TODO: map errors to li's
+    const errors = this.props.errors.map(error => {
+      return (
+        <li>{ error }</li>
+      );
+    });
 
     return (
       <div>
@@ -39,6 +47,9 @@ class LoginForm extends React.Component {
           <input type='submit' value='log in'></input>
         </form>
         <span>don't have an account? <Link to='/signup'>sign up</Link></span>
+        <ul>
+          { errors }
+        </ul>
       </div>
     );
   }
