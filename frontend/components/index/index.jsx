@@ -4,7 +4,7 @@ import React from 'react';
 const IndexPage = () => {
   return (
     <div>
-      <span>This is the Index Page</span>
+      <span>this is the index page</span>
     </div>
   );
 };

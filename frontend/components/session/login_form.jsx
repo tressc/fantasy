@@ -33,12 +33,12 @@ class LoginForm extends React.Component {
 
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
           <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
           <input type='submit' value='log in'></input>
         </form>
-        <span>don't have an account? <Link to='/signup'>Sign up</Link></span>
+        <span>don't have an account? <Link to='/signup'>sign up</Link></span>
       </div>
     );
   }
