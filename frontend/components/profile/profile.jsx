@@ -16,7 +16,7 @@ class Profile extends React.Component {
     return (
       <div>
         { redirect }
-        this is a profile page
+        this is your profile page
       </div>
     );
   }
