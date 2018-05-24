@@ -5,4 +5,6 @@ class Campaign < ApplicationRecord
     class_name: :User,
     foreign_key: :gm_id,
     primary_key: :id
+
+  
 end

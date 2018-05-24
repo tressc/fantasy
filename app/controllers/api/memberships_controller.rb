@@ -10,6 +10,7 @@ class Api::MembershipsController < ApplicationController
   end
 
   def show
+    @membership = Membership.find(params[:id])
   end
 
   def destroy
