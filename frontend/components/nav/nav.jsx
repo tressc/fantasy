@@ -13,6 +13,9 @@ class Nav extends React.Component {
         <div className='nav-left'>
           <a href={`/#/users/${profileId}`}>profile</a>
         </div>
+        <div className='nav-center'>
+          <a href='/#/'>home</a>
+        </div>
         <div className='nav-right'>
           <button onClick={this.props.logout}>
             log out
