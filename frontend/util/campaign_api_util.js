@@ -1,4 +1,4 @@
-export const createCampaign = (campaign) => {
+export const newCampaign = (campaign) => {
   return $.ajax({
     url: '/api/campaigns',
     method: 'POST',
