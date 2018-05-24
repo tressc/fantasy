@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    get 'memberships/create'
-  end
-
-  namespace :api do
-    get 'memberships/destroy'
-  end
-
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]
+    resources :campaigns, only: [:create, :update]
+    resources :memberships, only: [:create, :destroy]
     resource :session, only: [:create, :destroy]
   end
 
