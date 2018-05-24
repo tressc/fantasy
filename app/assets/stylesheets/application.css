@@ -23,3 +23,19 @@
 a {
   color: blue;
 }
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+}

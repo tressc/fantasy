@@ -7,11 +7,17 @@ class Nav extends React.Component {
   }
 
   render() {
+    const profileId = this.props.currentUser.id;
     return (
-      <div>
-        <button onClick={this.props.logout}>
-          log out
-        </button>
+      <div className='nav-bar'>
+        <div className='nav-left'>
+          <a href={`/#/users/${profileId}`}>profile</a>
+        </div>
+        <div className='nav-right'>
+          <button onClick={this.props.logout}>
+            log out
+          </button>
+        </div>
       </div>
     );
   }
