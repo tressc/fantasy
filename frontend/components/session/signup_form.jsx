@@ -32,6 +32,11 @@ class SignUpForm extends React.Component {
   }
 
   render() {
+    // let errors;
+    //
+    // if (this.props.errors.length > 0) {
+    //   errors = <li> { this.props.errors[0].toLowerCase } </li>;
+    // }
 
     const errors = this.props.errors.map(error => {
       return (
@@ -40,15 +45,20 @@ class SignUpForm extends React.Component {
     });
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
-          <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
-          <input type='submit' value='sign up'></input>
-        </form>
-        <span>already have an account? <Link to='/login'>log in</Link></span>
-        <ul>
-          { errors }
+      <div className='session'>
+        <div className='session-box'>
+          <form onSubmit={this.handleSubmit} className='session-box-form'>
+            <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
+            <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
+            <input type='submit' value='sign up' className='submit'></input>
+          </form>
+          <div className='change-auth'>
+            <span>already have an account?</span>
+            <Link to='/login'>log in</Link>
+          </div>
+        </div>
+        <ul className='session-errors'>
+          { errors[0] }
         </ul>
       </div>
     );

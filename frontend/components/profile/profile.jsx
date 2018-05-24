@@ -10,7 +10,7 @@ class Profile extends React.Component {
     let redirect;
 
     if (parseInt(this.props.userId) !== this.props.currentUser.id) {
-      redirect = <Redirect to='/login' />;
+      redirect = <Redirect to='/' />;
     }
 
     return (

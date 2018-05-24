@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  font-family: monospace;
+  font-size: 100%;
+  outline: none;
+}
+
+a {
+  color: blue;
+}

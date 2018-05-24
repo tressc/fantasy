@@ -40,14 +40,19 @@ class LoginForm extends React.Component {
     });
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
-          <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
-          <input type='submit' value='log in'></input>
-        </form>
-        <span>don't have an account? <Link to='/signup'>sign up</Link></span>
-        <ul>
+      <div className='session'>
+        <div className='session-box'>
+          <form onSubmit={this.handleSubmit} className='session-box-form'>
+            <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
+            <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
+            <input type='submit' value='log in' className='submit'></input>
+          </form>
+          <div className='change-auth'>
+            <span>don't have an account?</span>
+            <Link to='/signup'>sign up</Link>
+          </div>
+        </div>
+        <ul className='session-errors'>
           { errors }
         </ul>
       </div>

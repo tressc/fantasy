@@ -11,13 +11,11 @@ class Api::SessionsController < ApplicationController
       render 'api/users/show'
     elsif !User.find_by(username: params[:user][:username])
       render json: [
-        "the username you entered doesn't belong to an account." +
-        " please check your username and try again."
+        'invalid username'
       ], status: 403
     else
       render json: [
-        "sorry, your password was incorrect. " +
-        "please double-check your password."
+        'invalid password'
       ], status: 403
     end
   end
