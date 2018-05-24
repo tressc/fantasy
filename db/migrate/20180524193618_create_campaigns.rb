@@ -1,7 +1,7 @@
 class CreateCampaigns < ActiveRecord::Migration[5.1]
   def change
     create_table :campaigns do |t|
-      t.string :gm_id
+      t.integer :gm_id
       t.string :title
       t.string :description
 
