@@ -16,7 +16,9 @@ class Profile extends React.Component {
     return (
       <div>
         { redirect }
-        this is your profile page
+        <button onClick={() => this.props.openModal('campaign')}>
+          new campaign
+        </button>
       </div>
     );
   }

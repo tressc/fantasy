@@ -17,3 +17,5 @@ const campaignErrorsReducer = (state = [], action) => {
       return state;
   }
 };
+
+export default campaignErrorsReducer;
