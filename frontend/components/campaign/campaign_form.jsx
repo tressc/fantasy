@@ -38,12 +38,16 @@ class CampaignForm extends React.Component {
 
     return (
       <div className='campaign-form-box'>
-        <form onSubmit={this.handleSubmit}>
+        <div className='campaign-form-cancel'>
+          <button onClick={this.props.closeModal}>cancel</button>
+        </div>
+        <form onSubmit={this.handleSubmit} className='campaign-form-fields'>
           <input placeholder='campaign title' type='text' value={this.state.title} onChange={this.update('title')}></input>
-          <textarea placeholder='brief description of campaign' type='text' value={this.state.description} onChange={this.update('description')}></textarea>
+          <textarea placeholder='brief description of campaign' type='text' rows='5' value={this.state.description} onChange={this.update('description')}></textarea>
         </form>
-        <button onClick={this.props.closeModal}>cancel</button>
-        <button onClick={this.handleSubmit}>create</button>
+        <div className='campaign-form-create'>
+          <button onClick={this.handleSubmit}>create</button>
+        </div>
         <ul>
           { errors[0] }
         </ul>
