@@ -22,7 +22,11 @@ class CampaignForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const campaign = Object.assign({}, this.state);
-    this.props.createCampaign({campaign: campaign});
+    this.props.createCampaign({campaign: campaign}).then(() => {
+      if (this.props.errors.length === 0) {
+        this.props.closeModal();
+      }
+    });
   }
 
   render() {
@@ -33,10 +37,10 @@ class CampaignForm extends React.Component {
     });
 
     return (
-      <div>
+      <div className='campaign-form-box'>
         <form onSubmit={this.handleSubmit}>
           <input placeholder='campaign title' type='text' value={this.state.title} onChange={this.update('title')}></input>
-          <input placeholder='brief description of campaign' type='text' value={this.state.description} onChange={this.update('description')}></input>
+          <textarea placeholder='brief description of campaign' type='text' value={this.state.description} onChange={this.update('description')}></textarea>
         </form>
         <button onClick={this.props.closeModal}>cancel</button>
         <button onClick={this.handleSubmit}>create</button>
