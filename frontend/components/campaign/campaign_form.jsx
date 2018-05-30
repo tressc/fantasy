@@ -30,11 +30,13 @@ class CampaignForm extends React.Component {
   }
 
   render() {
+
     const errors = this.props.errors.map(error => {
       return (
         <li>{ error.toLowerCase() }</li>
       );
     });
+
 
     return (
       <div className='campaign-form-box'>

@@ -9,6 +9,9 @@ class Api::CampaignsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   # TODO: params nesting may need to be reworked
 
   def show

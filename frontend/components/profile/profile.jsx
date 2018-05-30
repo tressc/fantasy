@@ -7,6 +7,7 @@ class Profile extends React.Component {
   }
 
   render() {
+
     let redirect;
 
     if (parseInt(this.props.userId) !== this.props.currentUser.id) {
@@ -14,11 +15,33 @@ class Profile extends React.Component {
     }
 
     return (
-      <div>
+      <div className='profile-home'>
         { redirect }
-        <button onClick={() => this.props.openModal('campaign')}>
-          new campaign
-        </button>
+        <div>
+          <span>game master of:</span>
+          <ul>
+            <li>
+              <a>alaria</a>
+            </li>
+            <li>
+              <a>future sport</a>
+            </li>
+            <li>
+              <a>wasteland</a>
+            </li>
+          </ul>
+          <button onClick={() => this.props.openModal('campaign')}>
+            new campaign
+          </button>
+        </div>
+        <div>
+          <span>player in:</span>
+          <ul>
+            <li>
+              <a>space mountain</a>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
