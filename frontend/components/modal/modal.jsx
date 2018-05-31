@@ -1,5 +1,5 @@
 import React from 'react';
-import CampaignFormContainer from '../campaign/campaign_form_container';
+import CampaignFormContainer from '../campaign_form/campaign_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {

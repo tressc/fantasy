@@ -6,5 +6,13 @@ class Campaign < ApplicationRecord
     foreign_key: :gm_id,
     primary_key: :id
 
-  
+  has_many :memberships,
+    class_name: :Membership,
+    foreign_key: :campaign_id,
+    primary_key: :id
+
+  has_many :players,
+    through: :memberships,
+    source: :player
+
 end
