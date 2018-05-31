@@ -3,6 +3,19 @@ class User < ApplicationRecord
   validates :username, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :run_campaigns,
+    class_name: :Campaign,
+    foreign_key: :gm_id,
+    primary_key: :id
+
+  has_many :memberships,
+    class_name: :Membership,
+    foreign_key: :player_id,
+    primary_key: :id
+
+  has_many :campaigns,
+    through: :memberships,
+    source: :campaign
 
   attr_reader :password
 
