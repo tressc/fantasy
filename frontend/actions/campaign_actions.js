@@ -24,9 +24,15 @@ const receiveCampaign = (campaign) => {
   };
 };
 
+export const fetchCampaign = (id) => (dispatch) => {
+  return APIUtil.getCampaign(id).then(payload => {
+    dispatch(receiveCampaign(payload));
+  });
+};
+
 export const createCampaign = (campaign) => (dispatch) => {
-  return APIUtil.newCampaign(campaign).then(camp => {
-    dispatch(receiveCampaign(camp));
+  return APIUtil.newCampaign(campaign).then(payload => {
+    dispatch(receiveCampaign(payload));
   }, errors => {
     dispatch(receiveErrors(errors.responseJSON));
   });

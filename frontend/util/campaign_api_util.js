@@ -5,3 +5,10 @@ export const newCampaign = (campaign) => {
     data: campaign
   });
 };
+
+export const getCampaign = (id) => {
+  return $.ajax({
+    url: `/api/campaigns/${id}`,
+    method: 'GET'
+  });
+};
