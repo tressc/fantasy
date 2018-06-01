@@ -17,7 +17,7 @@ export const removeErrors = () => {
   };
 };
 
-const receiveCampaign = (campaign) => {
+const receiveCampaign = ({ campaign }) => {
   return {
     type: RECEIVE_CAMPAIGN,
     campaign

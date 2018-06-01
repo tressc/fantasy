@@ -7,6 +7,7 @@ import IndexContainer from './index/index_container';
 import NavContainer from './nav/nav_container';
 import ProfileContainer from './profile/profile_container';
 import ModalContainer from './modal/modal_container';
+import CampaignContainer from './campaign/campaign_container';
 
 // TODO: backticks? also protect all non-login/signup routes
 
@@ -21,6 +22,7 @@ const App = () => {
       </Switch>
       <ProtectedRoute exact path='/' component={ IndexContainer } />
       <ProtectedRoute path={`/users/:id`} component={ ProfileContainer } />
+      <ProtectedRoute path={`/campaigns/:id`} component={ CampaignContainer } />
     </div>
   );
 };
