@@ -1,4 +1,5 @@
 import { merge } from 'lodash';
+import { RECEIVE_CAMPAIGN } from '../actions/campaign_actions';
 import {
   RECEIVE_MEMBERSHIP,
   REMOVE_MEMBERSHIP
@@ -13,6 +14,8 @@ const membershipReducer = (state = {}, action) => {
       let newState = merge({}, state);
       delete newState[action.id];
       return newState;
+    case RECEIVE_CAMPAIGN:
+      return merge({}, state, action.memberships);
     default:
       return state;
   }
