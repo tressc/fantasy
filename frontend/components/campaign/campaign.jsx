@@ -13,8 +13,15 @@ class Campaign extends React.Component {
 
   render() {
 
+    let redirect;
+
+    if (!this.props.validUsers.includes(this.props.currentUser.id)) {
+      redirect = <Redirect to='/' />;
+    }
+
     return (
       <div>
+        { redirect }
         hello from the campaign show page
       </div>
     );
