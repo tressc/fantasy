@@ -19,10 +19,12 @@ export const removeErrors = () => {
 
 // TODO: deconstruct user data from jbuilder
 
-const receiveCurrentUser = ({ user }) => {
+const receiveCurrentUser = ({ user, run_campaigns, member_campaigns }) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
+    run_campaigns,
+    member_campaigns
   };
 };
 

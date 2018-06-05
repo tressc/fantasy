@@ -7,7 +7,7 @@ class Nav extends React.Component {
   }
 
   render() {
-    const profileId = this.props.currentUser.id;
+    const profileId = this.props.currentUser;
     return (
       <div className='nav-bar'>
         <div className='nav-left'>
