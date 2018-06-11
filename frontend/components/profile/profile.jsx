@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -18,21 +18,34 @@ class Profile extends React.Component {
       redirect = <Redirect to='/' />;
     }
 
+    let gmOf;
+    let playerIn;
+
+    if (this.props.hasCampaigns) {
+      gmOf = this.props.runCampaigns.map(camp => {
+        return (
+          <li>
+            <Link to={`/campaigns/${camp.id}`}>{camp.title}</Link>
+          </li>
+        );
+      });
+
+      playerIn = this.props.memberCampaigns.map(camp => {
+        return (
+          <li>
+            <Link to={`/campaigns/${camp.id}`}>{camp.title}</Link>
+          </li>
+        );
+      });
+    }
+
     return (
       <div className='profile-home'>
         { redirect }
         <div>
           <span>game master of:</span>
           <ul>
-            <li>
-              <a>alaria</a>
-            </li>
-            <li>
-              <a>future sport</a>
-            </li>
-            <li>
-              <a>wasteland</a>
-            </li>
+            { gmOf }
           </ul>
           <button onClick={() => this.props.openModal('campaign')}>
             new campaign
@@ -41,9 +54,7 @@ class Profile extends React.Component {
         <div>
           <span>player in:</span>
           <ul>
-            <li>
-              <a>space mountain</a>
-            </li>
+            { playerIn }
           </ul>
         </div>
       </div>

@@ -15,13 +15,14 @@ const msp = (state, ownProps) => {
   const memberCampaigns = currentUser.campaign_ids.map(id => {
     return state.entities.campaigns[id];
   });
-  debugger
+  const hasCampaigns = Object.keys(state.entities.campaigns).length > 0;
   return {
     userId,
     currentUserId,
     currentUser,
     runCampaigns,
-    memberCampaigns
+    memberCampaigns,
+    hasCampaigns
   };
 };
 
