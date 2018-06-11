@@ -7,10 +7,21 @@ import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const userId = ownProps.match.params.id;
-  const currentUser = state.session.currentUser;
+  const currentUserId = state.session.currentUser;
+  const currentUser = state.entities.users[currentUserId];
+  const runCampaigns = currentUser.run_campaign_ids.map(id => {
+    return state.entities.campaigns[id];
+  });
+  const memberCampaigns = currentUser.campaign_ids.map(id => {
+    return state.entities.campaigns[id];
+  });
+  debugger
   return {
     userId,
-    currentUser
+    currentUserId,
+    currentUser,
+    runCampaigns,
+    memberCampaigns
   };
 };
 
