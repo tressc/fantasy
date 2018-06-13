@@ -15,7 +15,18 @@ const msp = (state, ownProps) => {
   const memberCampaigns = currentUser.campaign_ids.map(id => {
     return state.entities.campaigns[id];
   });
-  const hasCampaigns = Object.keys(state.entities.campaigns).length > 0;
+  const userCampaigns = [];
+  state.entities.users[currentUserId].run_campaign_ids.forEach(id => {
+    userCampaigns.push(id);
+  });
+  state.entities.users[currentUserId].campaign_ids.forEach(id => {
+    if (!userCampaigns.includes(id)) {
+      userCampaigns.push(id);
+    }
+  });
+
+  const hasCampaigns =
+    Object.keys(state.entities.campaigns).length >= userCampaigns.length;
   return {
     userId,
     currentUserId,

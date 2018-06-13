@@ -24,7 +24,7 @@ class Profile extends React.Component {
     if (this.props.hasCampaigns) {
       gmOf = this.props.runCampaigns.map(camp => {
         return (
-          <li>
+          <li key={camp.id}>
             <Link to={`/campaigns/${camp.id}`}>{camp.title}</Link>
           </li>
         );
@@ -32,7 +32,7 @@ class Profile extends React.Component {
 
       playerIn = this.props.memberCampaigns.map(camp => {
         return (
-          <li>
+          <li key={camp.id}>
             <Link to={`/campaigns/${camp.id}`}>{camp.title}</Link>
           </li>
         );
