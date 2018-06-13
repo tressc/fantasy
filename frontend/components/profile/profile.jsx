@@ -11,7 +11,6 @@ class Profile extends React.Component {
   }
 
   render() {
-
     let redirect;
 
     if (parseInt(this.props.userId) !== this.props.currentUserId) {

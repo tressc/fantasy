@@ -13,7 +13,9 @@ const userReducer = (state = {}, action) => {
     case RECEIVE_CAMPAIGN:
       const gmId = action.campaign.gm_id;
       const  newIds = state[gmId].run_campaign_ids.slice();
-      newIds.push(action.campaign.id);
+      if (!newIds.includes(action.campaign.id)) {
+        newIds.push(action.campaign.id);
+      }
       return merge({}, state, {[gmId]: {run_campaign_ids: newIds}});
     default:
       return state;
