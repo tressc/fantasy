@@ -12,6 +12,13 @@ class Campaign extends React.Component {
   }
 
   render() {
+    let title;
+    let description;
+
+    if (this.props.hasCampaign) {
+      title = this.props.campaign.title;
+      description = this.props.campaign.description;
+    }
 
     let redirect;
 
@@ -23,7 +30,10 @@ class Campaign extends React.Component {
       <div>
         { redirect }
         <div>
-          hello from the campaign show page
+          { title }
+        </div>
+        <div>
+          { description }
         </div>
       </div>
     );

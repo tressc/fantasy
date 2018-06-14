@@ -10,10 +10,11 @@ const receiveMembership = (membership) => {
   };
 };
 
-const removeMembership = (id) => {
+const removeMembership = (membership) => {
+  debugger
   return {
     type: REMOVE_MEMBERSHIP,
-    id
+    membership
   };
 };
 
@@ -24,7 +25,7 @@ export const createMembership = (membership) => (dispatch) => {
 };
 
 export const destroyMembership = (id) => (dispatch) => {
-  return APIUtil.destroyMembership(id).then(response => {
-    dispatch(removeMembership(id));
+  return APIUtil.destroyMembership(id).then(membership => {
+    dispatch(removeMembership(membership));
   });
 };

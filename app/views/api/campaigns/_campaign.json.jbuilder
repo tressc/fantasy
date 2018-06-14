@@ -1,1 +1,1 @@
-json.extract! campaign, :id, :title, :gm_id, :player_ids
+json.extract! campaign, :id, :title, :description, :gm_id, :player_ids
