@@ -6,12 +6,13 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 // export const UPDATE_USER = 'UPDATE_USER';
 // export const RECEIVE_USERS = 'RECEIVE_USERS';
 
-const receiveUser = ({user, run_campaigns, member_campaigns}) => {
+const receiveUser = ({user, run_campaigns, member_campaigns, memberships}) => {
   return {
     type: RECEIVE_USER,
     user,
     run_campaigns,
-    member_campaigns
+    member_campaigns,
+    memberships
   };
 };
 

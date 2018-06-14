@@ -17,3 +17,11 @@ json.member_campaigns do
     end
   end
 end
+
+json.memberships do
+  @user.memberships.each do |membership|
+    json.set! membership.id do
+      json.partial! 'api/memberships/membership', membership: membership
+    end
+  end
+end

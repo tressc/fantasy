@@ -6,18 +6,20 @@ import { merge } from 'lodash';
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState;
   switch (action.type) {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user });
     case RECEIVE_CURRENT_USER:
       return merge({}, state, { [action.user.id]: action.user });
     case RECEIVE_CAMPAIGN:
+      newState = merge({}, state, action.players, action.gm);
       const gmId = action.campaign.gm_id;
-      const  newIds = state[gmId].run_campaign_ids.slice();
+      const  newIds = newState[gmId].run_campaign_ids.slice();
       if (!newIds.includes(action.campaign.id)) {
         newIds.push(action.campaign.id);
       }
-      return merge({}, state, {[gmId]: {run_campaign_ids: newIds}});
+      return merge({}, newState, {[gmId]: {run_campaign_ids: newIds}});
     case RECEIVE_MEMBERSHIP:
       const newPlayer = state[action.player_id];
       if (newPlayer) {
@@ -29,12 +31,12 @@ const userReducer = (state = {}, action) => {
       }
       return state;
     case REMOVE_MEMBERSHIP:
-      const newState = merge({}, state);
-      const oldPlayer = newState[action.player_id];
+      newState = merge({}, state);
+      const oldPlayer = newState[action.membership.player_id];
       if (oldPlayer) {
         const updatedCampaigns = oldPlayer.campaign_ids;
-        const oldIndex = updatedCampaigns.indexOf(action.campaign_id);
-        updatedCampaigns.splice(oldIndex, 1);
+        const oldIndex = updatedCampaigns.indexOf(action.membership.campaign_id);
+        newState[action.membership.player_id].campaign_ids.splice(oldIndex, 1);
       }
       return newState;
     default:

@@ -11,7 +11,6 @@ const receiveMembership = (membership) => {
 };
 
 const removeMembership = (membership) => {
-  debugger
   return {
     type: REMOVE_MEMBERSHIP,
     membership

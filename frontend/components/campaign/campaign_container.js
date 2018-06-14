@@ -14,12 +14,14 @@ const msp = (state, ownProps) => {
   const validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
     currentUser.run_campaign_ids.includes(parseInt(campaignId));
   const hasCampaign = campaign ? true : false;
+  const memberships = state.entities.memberships;
   let isGm;
   let isPlayer;
   if (hasCampaign) {
     if (campaign.gm_id === currentUser.id) {
       isGm = true;
-    } else {
+    }
+    if (campaign.player_ids.includes(currentUser.id)) {
       isPlayer = true;
     }
   }
@@ -28,6 +30,7 @@ const msp = (state, ownProps) => {
     campaign,
     validUser,
     hasCampaign,
+    memberships,
     isGm,
     isPlayer
   };

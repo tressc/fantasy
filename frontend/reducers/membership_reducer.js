@@ -4,6 +4,7 @@ import {
   RECEIVE_MEMBERSHIP,
   REMOVE_MEMBERSHIP
 } from '../actions/membership_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const membershipReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -12,9 +13,11 @@ const membershipReducer = (state = {}, action) => {
       return merge({}, state, action.membership);
     case REMOVE_MEMBERSHIP:
       let newState = merge({}, state);
-      delete newState[action.id];
+      delete newState[action.membership.id];
       return newState;
     case RECEIVE_CAMPAIGN:
+      return merge({}, state, action.memberships);
+    case RECEIVE_USER:
       return merge({}, state, action.memberships);
     default:
       return state;

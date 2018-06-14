@@ -18,10 +18,10 @@ end
 
 # TODO: remove if not needed
 
-# json.memberships do
-#   @campaign.memberships.each do |membership|
-#     json.set! membership.id do
-#       json.partial! 'api/memberships/membership', membership: membership
-#     end
-#   end
-# end
+json.memberships do
+  @campaign.memberships.each do |membership|
+    json.set! membership.id do
+      json.partial! 'api/memberships/membership', membership: membership
+    end
+  end
+end

@@ -22,11 +22,11 @@ const campaignReducer = (state = {}, action) => {
         return state;
       case REMOVE_MEMBERSHIP:
         const newState = merge({}, state);
-        const oldCampaign = newState[action.campaign_id];
+        const oldCampaign = newState[action.membership.campaign_id];
         if (oldCampaign) {
           const updatedPlayers = oldCampaign.player_ids;
-          const oldIndex = updatedPlayers.indexOf(action.player_id);
-          updatedPlayers.splice(oldIndex, 1);
+          const oldIndex = updatedPlayers.indexOf(action.membership.player_id);
+          newState[action.membership.campaign_id].player_ids.splice(oldIndex, 1);
         }
         return newState;
     default:
