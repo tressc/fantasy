@@ -19,10 +19,24 @@ const userReducer = (state = {}, action) => {
       }
       return merge({}, state, {[gmId]: {run_campaign_ids: newIds}});
     case RECEIVE_MEMBERSHIP:
-    // TODO: 
+      const newPlayer = state[action.player_id];
+      if (newPlayer) {
+        const updatedCampaigns = newPlayer.campaign_ids.slice();
+        if (!updatedCampaigns.includes(action.campaign_id)) {
+          updatedCampaigns.push(action.campaign_id);
+        }
+        return merge({}, state, {[newPlayer.id]: {campaign_ids: updatedCampaigns}});
+      }
       return state;
     case REMOVE_MEMBERSHIP:
-      return;
+      const newState = merge({}, state);
+      const oldPlayer = newState[action.player_id];
+      if (oldPlayer) {
+        const updatedCampaigns = oldPlayer.campaign_ids;
+        const oldIndex = updatedCampaigns.indexOf(action.campaign_id);
+        updatedCampaigns.splice(oldIndex, 1);
+      }
+      return newState;
     default:
       return state;
   }
