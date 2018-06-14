@@ -4,7 +4,7 @@ import { fetchCampaign } from '../../actions/campaign_actions';
 import {
   createMembership,
   destroyMembership
-} from '../../action/membership_actions';
+} from '../../actions/membership_actions';
 import Campaign from './campaign';
 
 const msp = (state, ownProps) => {
@@ -14,11 +14,22 @@ const msp = (state, ownProps) => {
   const validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
     currentUser.run_campaign_ids.includes(parseInt(campaignId));
   const hasCampaign = campaign ? true : false;
+  let isGm;
+  let isPlayer;
+  if (hasCampaign) {
+    if (campaign.gm_id === currentUser.id) {
+      isGm = true;
+    } else {
+      isPlayer = true;
+    }
+  }
   return {
     currentUser,
     campaign,
     validUser,
-    hasCampaign
+    hasCampaign,
+    isGm,
+    isPlayer
   };
 };
 
