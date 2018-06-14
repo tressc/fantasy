@@ -1,5 +1,6 @@
 class Membership < ApplicationRecord
   validates :campaign_id, :player_id, presence: true
+  validates_uniqueness_of :player_id, scope: :campaign_id
 
   belongs_to :player,
     class_name: :User,
