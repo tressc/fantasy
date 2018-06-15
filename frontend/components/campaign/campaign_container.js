@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { fetchCampaign } from '../../actions/campaign_actions';
 import {
   createMembership,
-  destroyMembership
+  destroyMembership,
+  removeMembershipErrors
 } from '../../actions/membership_actions';
 import Campaign from './campaign';
 
@@ -40,7 +41,8 @@ const mdp = (dispatch) => {
   return {
     fetchCampaign: (id) => dispatch(fetchCampaign(id)),
     createMembership: (membership) => dispatch(createMembership(membership)),
-    destroyMembership: (id) => dispatch(destroyMembership(id))
+    destroyMembership: (id) => dispatch(destroyMembership(id)),
+    removeMembershipErrors: () => dispatch(removeMembershipErrors())
   };
 };
 

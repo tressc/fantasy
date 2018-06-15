@@ -9,6 +9,7 @@ class Campaign extends React.Component {
 
 
   componentDidMount() {
+    this.props.removeMembershipErrors();
     this.props.fetchCampaign(this.props.match.params.id);
   }
 

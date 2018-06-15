@@ -2,6 +2,8 @@ import * as APIUtil from '../util/membership_api_util';
 
 export const RECEIVE_MEMBERSHIP = 'RECEIVE_MEMBERSHIP';
 export const REMOVE_MEMBERSHIP = 'REMOVE_MEMBERSHIP';
+export const RECEIVE_MEMBERSHIP_ERRORS = 'RECEIVE_MEMBERSHIP_ERRORS';
+export const REMOVE_MEMBERSHIP_ERRORS = 'REMOVE_MEMBERSHIP_ERRORS';
 
 const receiveMembership = (membership) => {
   return {
@@ -17,9 +19,24 @@ const removeMembership = (membership) => {
   };
 };
 
+const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_MEMBERSHIP_ERRORS,
+    errors
+  };
+};
+
+export const removeMembershipErrors = () => {
+  return {
+    type: REMOVE_MEMBERSHIP_ERRORS
+  };
+};
+
 export const createMembership = (membership) => (dispatch) => {
   return APIUtil.newMembership(membership).then(m => {
     dispatch(receiveMembership(m));
+  }, errors => {
+    dispatch(receiveErrors(errors.responseJSON));
   });
 };
 
