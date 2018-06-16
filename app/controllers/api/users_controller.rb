@@ -3,7 +3,15 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
+  def index
+    if params[:query].present?
+      @users = User.search(params[:query])
+      render :search
+    else
+      # TODO: Remove if never needed
+      @user = User.all
+      render :index
+    end
   end
 
   def create
@@ -14,12 +22,6 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: 403
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private
