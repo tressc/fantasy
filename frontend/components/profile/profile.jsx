@@ -39,22 +39,25 @@ class Profile extends React.Component {
     }
 
     return (
-      <div className='profile-home'>
+      <div>
         { redirect }
-        <div>
-          <span>game master of:</span>
-          <ul>
-            { gmOf }
-          </ul>
-          <button onClick={() => this.props.openModal('campaign')}>
-            new campaign
-          </button>
-        </div>
-        <div>
-          <span>player in:</span>
-          <ul>
-            { playerIn }
-          </ul>
+        <h1>{this.props.currentUser.username + '\'s profile'}</h1>
+        <div className='profile-home'>
+          <div>
+            <span>game master of:</span>
+            <ul>
+              { gmOf }
+            </ul>
+            <button onClick={() => this.props.openModal('campaign')}>
+              new campaign
+            </button>
+          </div>
+          <div>
+            <span>player in:</span>
+            <ul>
+              { playerIn }
+            </ul>
+          </div>
         </div>
       </div>
     );

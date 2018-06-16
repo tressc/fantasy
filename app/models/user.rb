@@ -30,6 +30,13 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64(16)
   end
 
+  def self.search(query)
+    sql = "%" + query.downcase + "%"
+    User
+      .where('lower(username) LIKE ?', sql)
+      .limit(8)
+  end
+
   def reset_session_token!
     self.session_token = User.generate_token
     self.save!
