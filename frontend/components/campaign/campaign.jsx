@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import UserSearchContainer from '../search/user_search_container';
 
 class Campaign extends React.Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class Campaign extends React.Component {
         <div>
           { description }
         </div>
+        <UserSearchContainer />
         { leaveCampaign }
       </div>
     );

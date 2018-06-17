@@ -1,4 +1,4 @@
-import USER_SEARCH_RESULTS from '../actions/search_actions';
+import { USER_SEARCH_RESULTS }from '../actions/search_actions';
 
 const searchReducer = (state = [], action) => {
   switch (action.type) {
