@@ -11,7 +11,7 @@ json.run_campaigns do
 end
 
 json.member_campaigns do
-  @user.campaigns.each do |campaign|
+  @user.joined_campaigns.each do |campaign|
     json.set! campaign.id do
       json.partial! 'api/campaigns/campaign', campaign: campaign
     end
@@ -19,9 +19,16 @@ json.member_campaigns do
 end
 
 json.memberships do
-  @user.memberships.each do |membership|
+  @user.approved_memberships.each do |membership|
     json.set! membership.id do
       json.partial! 'api/memberships/membership', membership: membership
     end
   end
+end
+
+json.pending_memberships do
+  @user.pending_memberships.each do |membership|
+    json.set! membership.id do
+      json.partial! 'api/memberships/membership', membership: membership
+    end
 end

@@ -21,15 +21,21 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  def approved_ids
+  def approved_memberships
     self.memberships.where(status: 'APPROVED').map do |mem|
-      mem.id
+      mem
     end
   end
 
-  def pending_ids
+  def pending_memberships
     self.memberships.where(status: 'PENDING').map do |mem|
-      mem.id
+      mem
+    end
+  end
+
+  def joined_campaigns
+    self.approved_memberships.map do |mem|
+      self.campaigns.where(id: mem.campaign_id)
     end
   end
 
