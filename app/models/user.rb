@@ -39,6 +39,12 @@ class User < ApplicationRecord
     end
   end
 
+  def campaign_ids
+    self.joined_campaigns.map do |camp|
+      camp.id
+    end
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil

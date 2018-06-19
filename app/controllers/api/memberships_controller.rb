@@ -11,6 +11,13 @@ class Api::MembershipsController < ApplicationController
     end
   end
 
+  def update
+    @membership.find(params[:id])
+    @membership.status = 'APPROVED'
+    @membership.save
+    render :show
+  end
+
   def show
     @membership = Membership.find(params[:id])
   end
