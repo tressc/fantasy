@@ -6,6 +6,13 @@ export const newMembership = (membership) => {
   });
 };
 
+export const approveMembership = (id) => {
+  return $.ajax({
+    url: `/api/memberships/${id}`,
+    method: 'PATCH'
+  });
+};
+
 export const destroyMembership = (id) => {
   return $.ajax({
     url: `/api/memberships/${id}`,

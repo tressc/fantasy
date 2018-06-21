@@ -16,6 +16,6 @@ The second phase focuses on the GM created content, namely lore, racial and occu
 
 As a GM, users can create new pages for any of this content, and set it as public or private depending on whether players should be able to view it or not.
 
-These pages will be organized within a repository structure, with each folder containing folders and or pages. Private pages or folders will be invisible to players viewing the repository.
+These pages will be organized within a repository structure, with each folder containing folders and/or pages. Private pages or folders will be invisible to players viewing the repository.
 
 To edit the pages, GMs will employ a rich text editor that will allow for embedded images.

@@ -6,14 +6,20 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 // export const UPDATE_USER = 'UPDATE_USER';
 // export const RECEIVE_USERS = 'RECEIVE_USERS';
 
-const receiveUser = ({user, run_campaigns, member_campaigns, memberships}) => {
-  return {
-    type: RECEIVE_USER,
+const receiveUser = ({
     user,
     run_campaigns,
     member_campaigns,
-    memberships
-  };
+    memberships,
+    pending_memberships
+  }) => {
+    return {
+      type: RECEIVE_USER,
+      user,
+      run_campaigns,
+      member_campaigns,
+      memberships,
+    };
 };
 
 export const fetchUser = (id) => (dispatch) => {
