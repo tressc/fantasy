@@ -26,6 +26,8 @@ json.memberships do
   end
 end
 
+# TODO: probably remove this stuff
+
 # json.memberships do
 #   @user.approved_memberships.each do |membership|
 #     json.set! membership.id do

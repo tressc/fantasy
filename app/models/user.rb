@@ -22,15 +22,11 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   def approved_memberships
-    self.memberships.where(status: 'APPROVED').map do |mem|
-      mem
-    end
+    self.memberships.where(status: 'APPROVED')
   end
 
   def pending_memberships
-    self.memberships.where(status: 'PENDING').map do |mem|
-      mem
-    end
+    self.memberships.where(status: 'PENDING')
   end
 
   def joined_campaigns
@@ -40,15 +36,11 @@ class User < ApplicationRecord
   end
 
   def campaign_ids
-    self.joined_campaigns.map do |camp|
-      camp.id
-    end
+    self.approved_memberships.map(&:campaign_id)
   end
 
   def pending_ids
-    self.pending_memberships.map do |mem|
-      mem.id
-    end
+    self.pending_memberships.map(&:id)
   end
 
   def self.find_by_credentials(username, password)
