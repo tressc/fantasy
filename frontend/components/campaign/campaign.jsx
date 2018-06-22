@@ -28,6 +28,10 @@ class Campaign extends React.Component {
     };
   }
 
+  createMembership() {
+    
+  }
+
   render() {
     let redirect;
     if (this.props.validUser === false) {

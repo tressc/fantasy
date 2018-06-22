@@ -64,7 +64,7 @@ class UserSearch extends React.Component {
           placeholder='search'
           value={ this.state.searchText }
         />
-      <div>
+      <div className={ this.state.dropdown }>
           { dropDown }
         </div>
       </div>

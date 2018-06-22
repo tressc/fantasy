@@ -19,10 +19,11 @@ const msp = (state, ownProps) => {
   let isGm;
   let isPlayer;
   if (hasCampaign) {
+    const allPlayers = campaign.active_player_ids.concat(campaign.pending_player_ids);
     if (campaign.gm_id === currentUser.id) {
       isGm = true;
     }
-    if (campaign.player_ids.includes(currentUser.id)) {
+    if (allPlayers.includes(currentUser.id)) {
       isPlayer = true;
     }
   }
