@@ -11,7 +11,7 @@ json.run_campaigns do
 end
 
 json.member_campaigns do
-  @user.joined_campaigns.each do |campaign|
+  @user.campaigns.each do |campaign|
     json.set! campaign.id do
       json.partial! 'api/campaigns/campaign', campaign: campaign
     end
