@@ -1,12 +1,14 @@
 import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_CAMPAIGN } from '../actions/campaign_actions';
-import { REMOVE_MEMBERSHIP, RECEIVE_MEMBERSHIP } from '../actions/membership_actions';
+import { REMOVE_MEMBERSHIP, RECEIVE_MEMBERSHIP, UPDATE_MEMBERSHIP } from '../actions/membership_actions';
 import { merge } from 'lodash';
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState;
+  let oldPlayer;
+  let idx;
   switch (action.type) {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user });
@@ -32,11 +34,24 @@ const userReducer = (state = {}, action) => {
       return state;
     case REMOVE_MEMBERSHIP:
       newState = merge({}, state);
-      const oldPlayer = newState[action.membership.player_id];
+      oldPlayer = newState[action.membership.player_id];
       if (oldPlayer) {
-        const updatedCampaigns = oldPlayer.campaign_ids;
-        const oldIndex = updatedCampaigns.indexOf(action.membership.campaign_id);
-        newState[action.membership.player_id].campaign_ids.splice(oldIndex, 1);
+        idx = oldPlayer.campaign_ids.indexOf(action.membership.campaign_id);
+        if (idx) {
+          newState[action.membership.player_id].campaign_ids.splice(idx, 1);
+        } else {
+          idx = oldPlayer.pending_ids.indexOf(action.membership.campaign_id);
+          newState[action.membership.player_id].pending_ids.splice(idx, 1);
+        }
+      }
+      return newState;
+    case UPDATE_MEMBERSHIP:
+      newState = merge({}, state);
+      oldPlayer = newState[action.membership.player_id];
+      if (oldPlayer) {
+        idx = oldPlayer.pending_ids.indexOf(action.membership.campaign_id);
+        newState[action.membership.player_id].pending_ids.splice(idx, 1);
+        newState[action.membership.player_id].campaign_ids.push(action.membership.campaign_id);
       }
       return newState;
     default:
