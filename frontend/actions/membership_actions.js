@@ -4,10 +4,18 @@ export const RECEIVE_MEMBERSHIP = 'RECEIVE_MEMBERSHIP';
 export const REMOVE_MEMBERSHIP = 'REMOVE_MEMBERSHIP';
 export const RECEIVE_MEMBERSHIP_ERRORS = 'RECEIVE_MEMBERSHIP_ERRORS';
 export const REMOVE_MEMBERSHIP_ERRORS = 'REMOVE_MEMBERSHIP_ERRORS';
+export const UPDATE_MEMBERSHIP = 'UPDATE_MEMBERSHIP';
 
 const receiveMembership = (membership) => {
   return {
     type: RECEIVE_MEMBERSHIP,
+    membership
+  };
+};
+
+const updateMembership = (membership) => {
+  return {
+    type: UPDATE_MEMBERSHIP,
     membership
   };
 };
@@ -43,5 +51,11 @@ export const createMembership = (membership) => (dispatch) => {
 export const destroyMembership = (id) => (dispatch) => {
   return APIUtil.destroyMembership(id).then(membership => {
     dispatch(removeMembership(membership));
+  });
+};
+
+export const approveMembership = (id) => (dispatch) => {
+  return APIUtil.approveMembership(id).then(membership => {
+    dispatch(updateMembership(membership));
   });
 };
