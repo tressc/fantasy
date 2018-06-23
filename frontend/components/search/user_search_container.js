@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userSearch } from '../../actions/search_actions';
+import { createMembership } from '../../actions/membership_actions';
 import UserSearch from './user_search';
 
 const msp = (state) => {
@@ -11,7 +12,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return ({
-    userSearch: (query) => dispatch(userSearch(query))
+    userSearch: (query) => dispatch(userSearch(query)),
+    createMembership: (membership) => dispatch(createMembership(membership))
   });
 };
 

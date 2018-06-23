@@ -28,10 +28,6 @@ class Campaign extends React.Component {
     };
   }
 
-  createMembership() {
-    
-  }
-
   render() {
     let redirect;
     if (this.props.validUser === false) {
@@ -40,9 +36,11 @@ class Campaign extends React.Component {
 
     let title;
     let description;
+    let id;
     if (this.props.hasCampaign) {
       title = this.props.campaign.title;
       description = this.props.campaign.description;
+      id = this.props.campaign.id;
     }
 
     let leaveCampaign;
@@ -64,8 +62,8 @@ class Campaign extends React.Component {
         <div>
           { description }
         </div>
-        <UserSearchContainer />
         { leaveCampaign }
+        <UserSearchContainer campId={id}/>
       </div>
     );
   }

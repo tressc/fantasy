@@ -35,9 +35,13 @@ class UserSearch extends React.Component {
     }
   }
 
-  handleChoice() {
-    this.closeDropClass();
-    this.state.searchText = '';
+  handleChoice(userId, campId) {
+    return () => {
+      const membership = {player_id: userId, campaign_id: campId};
+      this.props.createMembership({membership: membership});
+      this.closeDropClass();
+      this.state.searchText = '';
+    };
   }
 
   render() {
@@ -50,6 +54,9 @@ class UserSearch extends React.Component {
       return (
         <div
           key={user.id}
+          className="search-user"
+          onClick={this.handleChoice(user.id, this.props.campId)}
+          data={user.id}
         >
           { user.username }
         </div>

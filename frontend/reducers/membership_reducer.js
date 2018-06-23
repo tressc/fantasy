@@ -11,9 +11,9 @@ const membershipReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_MEMBERSHIP:
-      return merge({}, state, action.membership);
+      return merge({}, state, {[action.membership.id]: action.membership});
     case UPDATE_MEMBERSHIP:
-      return merge({}, state, action.membership);
+      return merge({}, state, {[action.membership.id]: action.membership});
     case REMOVE_MEMBERSHIP:
       let newState = merge({}, state);
       delete newState[action.membership.id];

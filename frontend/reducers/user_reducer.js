@@ -23,14 +23,23 @@ const userReducer = (state = {}, action) => {
       }
       return merge({}, newState, {[gmId]: {run_campaign_ids: newIds}});
     case RECEIVE_MEMBERSHIP:
-      const newPlayer = state[action.player_id];
-      if (newPlayer) {
-        const updatedCampaigns = newPlayer.campaign_ids.slice();
-        if (!updatedCampaigns.includes(action.campaign_id)) {
-          updatedCampaigns.push(action.campaign_id);
+    // TODO: figure out why this is not working
+      const player = state[action.player_id];
+      if (player) {
+        const pendings = player.pending_ids.slice();
+        if (!pendings.includes(action.id)) {
+          pendings.push(action.id);
         }
-        return merge({}, state, {[newPlayer.id]: {campaign_ids: updatedCampaigns}});
+        return merge({}, state, {[action.player_id]: {pending_ids: pendings}});
       }
+      // const newPlayer = state[action.player_id];
+      // if (newPlayer) {
+      //   const updatedCampaigns = newPlayer.campaign_ids.slice();
+      //   if (!updatedCampaigns.includes(action.campaign_id)) {
+      //     updatedCampaigns.push(action.campaign_id);
+      //   }
+      //   return merge({}, state, {[newPlayer.id]: {campaign_ids: updatedCampaigns}});
+      // }
       return state;
     case REMOVE_MEMBERSHIP:
       newState = merge({}, state);
