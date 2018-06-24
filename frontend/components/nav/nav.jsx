@@ -9,6 +9,7 @@ class Nav extends React.Component {
       dropdown: 'closed-dropdown'
     };
     this.changeDropClass = this.changeDropClass.bind(this);
+    this.handleChoice = this.handleChoice.bind(this);
   }
 
   componentWillMount() {
@@ -19,6 +20,16 @@ class Nav extends React.Component {
     if (this.state.dropdown === 'open-dropdown') {
       this.changeDropClass();
     }
+  }
+
+  handleChoice(choice, id) {
+    return () => {
+      if (choice === 'approve') {
+        this.props.approveMembership(id);
+      } else {
+        this.props.destroyMembership(id);
+      }
+    };
   }
 
   changeDropClass() {
@@ -35,13 +46,21 @@ class Nav extends React.Component {
       if (this.props.pendings.length === 0) {
         dropdown = <div>no mail at this time</div>;
         } else {
-          dropdown = this.props.pendings.map(membership => {
+          dropdown = this.props.pendings.map(p => {
             return (
-              <div key={ membership.id }>
-                <span>campaign name</span>
-                <span>gm name</span>
-                <button>approve</button>
-                <button>reject</button>
+              <div key={ p.id }>
+                <span>{ p.name }</span>
+                <span>{ p.gm }</span>
+                <button onClick={
+                  this.handleChoice('approve', p.membershipId)
+                }>
+                  approve
+                </button>
+                <button onClick={
+                  this.handleChoice('reject', p.membershipId)
+                }>
+                  reject
+                </button>
               </div>
             );
           });

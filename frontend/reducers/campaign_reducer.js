@@ -26,12 +26,12 @@ const campaignReducer = (state = {}, action) => {
         newState = merge({}, state);
         oldCampaign = newState[action.membership.campaign_id];
         if (oldCampaign) {
-          let idx = oldCampaign.pending_player_ids.indexOf(action.membership.player_id);
-          if (idx || idx === 0) {
-            newState[action.membership.campaign_id].pending_player_ids.splice(idx, 1);
+          let idx1 = oldCampaign.pending_player_ids.indexOf(action.membership.player_id);
+          let idx2 = oldCampaign.active_player_ids.indexOf(action.membership.player_id);
+          if (idx1 !== -1) {
+            newState[action.membership.campaign_id].pending_player_ids.splice(idx1, 1);
           } else {
-            idx = oldCampaign.active_player_ids.indexOf(action.membership.player_id);
-            newState[action.membership.campaign_id].active_player_ids.splice(idx, 1);
+            newState[action.membership.campaign_id].active_player_ids.splice(idx2, 1);
           }
         }
         return newState;

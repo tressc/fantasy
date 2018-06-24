@@ -8,7 +8,6 @@ const userReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState;
   let oldPlayer;
-  let idx;
   switch (action.type) {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user });
@@ -37,12 +36,12 @@ const userReducer = (state = {}, action) => {
       newState = merge({}, state);
       oldPlayer = newState[action.membership.player_id];
       if (oldPlayer) {
-        idx = oldPlayer.pending_ids.indexOf(action.membership.id);
-        if (idx || idx === 0) {
-          newState[action.membership.player_id].pending_ids.splice(idx, 1);
+        let idx1 = oldPlayer.pending_ids.indexOf(action.membership.id);
+        let idx2 = oldPlayer.campaign_ids.indexOf(action.membership.campaign_id);
+        if (idx1 !== -1) {
+          newState[action.membership.player_id].pending_ids.splice(idx1, 1);
         } else {
-          idx = oldPlayer.campaign_ids.indexOf(action.membership.campaign_id);
-          newState[action.membership.player_id].campaign_ids.splice(idx, 1);
+          newState[action.membership.player_id].campaign_ids.splice(idx2, 1);
         }
       }
       return newState;
@@ -50,8 +49,8 @@ const userReducer = (state = {}, action) => {
       newState = merge({}, state);
       oldPlayer = newState[action.membership.player_id];
       if (oldPlayer) {
-        idx = oldPlayer.pending_ids.indexOf(action.membership.campaign_id);
-        newState[action.membership.player_id].pending_ids.splice(idx, 1);
+        let idx3 = oldPlayer.pending_ids.indexOf(action.membership.campaign_id);
+        newState[action.membership.player_id].pending_ids.splice(idx3, 1);
         newState[action.membership.player_id].campaign_ids.push(action.membership.campaign_id);
       }
       return newState;

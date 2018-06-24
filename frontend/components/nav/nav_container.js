@@ -18,16 +18,18 @@ const msp = (state) => {
   const userMemberships = user.pending_ids.concat(user.campaign_ids);
   hasUser = stateMemberships.length >= userMemberships.length;
   pendingIds = state.entities.users[currentUser].pending_ids;
-  pendings = pendingIds.map(id => {
-    const membership = state.entities.memberships[id];
-    const campaign = state.entities.campaign;
-    return {
-      id: membership.id,
-      name: campaign.title,
-      // TODO: get gm_name from campaign
-      // gm: campaign.gm_name
-    };
-  });
+  if (hasUser) {
+    pendings = pendingIds.map(id => {
+      const membership = state.entities.memberships[id];
+      const campaign = state.entities.campaigns[membership.campaign_id];
+      return {
+        membershipId: membership.id,
+        campaignId: campaign.id,
+        name: campaign.title,
+        gm: campaign.gm_name
+      };
+    });
+  }
   return {
     currentUser,
     pendings,
