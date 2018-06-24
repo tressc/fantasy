@@ -7,7 +7,6 @@ export const newMembership = (membership) => {
 };
 
 export const approveMembership = (id) => {
-  debugger
   return $.ajax({
     url: `/api/memberships/${id}`,
     method: 'PATCH'

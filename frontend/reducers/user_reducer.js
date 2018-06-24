@@ -24,33 +24,25 @@ const userReducer = (state = {}, action) => {
       return merge({}, newState, {[gmId]: {run_campaign_ids: newIds}});
     case RECEIVE_MEMBERSHIP:
     // TODO: figure out why this is not working
-      const player = state[action.player_id];
+      const player = state[action.membership.player_id];
       if (player) {
         const pendings = player.pending_ids.slice();
-        if (!pendings.includes(action.id)) {
-          pendings.push(action.id);
+        if (!pendings.includes(action.membership.id)) {
+          pendings.push(action.membership.id);
         }
-        return merge({}, state, {[action.player_id]: {pending_ids: pendings}});
+        return merge({}, state, {[action.membership.player_id]: {pending_ids: pendings}});
       }
-      // const newPlayer = state[action.player_id];
-      // if (newPlayer) {
-      //   const updatedCampaigns = newPlayer.campaign_ids.slice();
-      //   if (!updatedCampaigns.includes(action.campaign_id)) {
-      //     updatedCampaigns.push(action.campaign_id);
-      //   }
-      //   return merge({}, state, {[newPlayer.id]: {campaign_ids: updatedCampaigns}});
-      // }
       return state;
     case REMOVE_MEMBERSHIP:
       newState = merge({}, state);
       oldPlayer = newState[action.membership.player_id];
       if (oldPlayer) {
-        idx = oldPlayer.campaign_ids.indexOf(action.membership.campaign_id);
-        if (idx) {
-          newState[action.membership.player_id].campaign_ids.splice(idx, 1);
-        } else {
-          idx = oldPlayer.pending_ids.indexOf(action.membership.campaign_id);
+        idx = oldPlayer.pending_ids.indexOf(action.membership.id);
+        if (idx || idx === 0) {
           newState[action.membership.player_id].pending_ids.splice(idx, 1);
+        } else {
+          idx = oldPlayer.campaign_ids.indexOf(action.membership.campaign_id);
+          newState[action.membership.player_id].campaign_ids.splice(idx, 1);
         }
       }
       return newState;

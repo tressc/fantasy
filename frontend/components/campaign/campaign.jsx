@@ -44,7 +44,8 @@ class Campaign extends React.Component {
     }
 
     let leaveCampaign;
-    if (this.props.isPlayer) {
+    // TODO: Change this to isActivePlayer after testing
+    if (this.props.isPendingPlayer) {
       const campId = this.props.campaign.id;
       const playerId = this.props.currentUser.id;
       leaveCampaign = <button onClick={this.endMembership(campId, playerId)}>

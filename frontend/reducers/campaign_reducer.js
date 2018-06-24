@@ -13,25 +13,25 @@ const campaignReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, action.run_campaigns, action.member_campaigns);
       case RECEIVE_MEMBERSHIP:
-        const newCampaign = state[action.campaign_id];
+        const newCampaign = state[action.membership.campaign_id];
         if (newCampaign) {
-          const updatedPlayers = newCampaign.player_ids.slice();
+          const updatedPlayers = newCampaign.pending_player_ids.slice();
           if (!updatedPlayers.includes(action.player_id)) {
-            updatedPlayers.push(action.player_id);
+            updatedPlayers.push(action.membership.player_id);
           }
-          return merge({}, state, {[newCampaign.id]: {player_ids: updatedPlayers}});
+          return merge({}, state, {[newCampaign.id]: {pending_player_ids: updatedPlayers}});
         }
         return state;
       case REMOVE_MEMBERSHIP:
         newState = merge({}, state);
         oldCampaign = newState[action.membership.campaign_id];
         if (oldCampaign) {
-          let idx = oldCampaign.active_player_ids.indexOf(action.membership.player_id);
-          if (idx) {
-            newState[action.membership.campaign_id].active_player_ids.splice(idx, 1);
-          } else {
-            idx = oldCampaign.pending_player_ids.indexOf(action.membership.player_id);
+          let idx = oldCampaign.pending_player_ids.indexOf(action.membership.player_id);
+          if (idx || idx === 0) {
             newState[action.membership.campaign_id].pending_player_ids.splice(idx, 1);
+          } else {
+            idx = oldCampaign.active_player_ids.indexOf(action.membership.player_id);
+            newState[action.membership.campaign_id].active_player_ids.splice(idx, 1);
           }
         }
         return newState;

@@ -17,14 +17,18 @@ const msp = (state, ownProps) => {
   const hasCampaign = campaign ? true : false;
   const memberships = state.entities.memberships;
   let isGm;
-  let isPlayer;
+  let isActivePlayer;
+  let isPendingPlayer;
   if (hasCampaign) {
-    const allPlayers = campaign.active_player_ids.concat(campaign.pending_player_ids);
+    // const allPlayers = campaign.active_player_ids.concat(campaign.pending_player_ids);
     if (campaign.gm_id === currentUser.id) {
       isGm = true;
     }
-    if (allPlayers.includes(currentUser.id)) {
-      isPlayer = true;
+    if (campaign.active_player_ids.includes(currentUser.id)) {
+      isActivePlayer = true;
+    }
+    if (campaign.pending_player_ids.includes(currentUser.id)) {
+      isPendingPlayer = true;
     }
   }
   return {
@@ -34,7 +38,8 @@ const msp = (state, ownProps) => {
     hasCampaign,
     memberships,
     isGm,
-    isPlayer
+    isActivePlayer,
+    isPendingPlayer
   };
 };
 
