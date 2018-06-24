@@ -10,6 +10,13 @@
   margin: 0 5%;
 }
 
+.nav-left {
+  display: flex;
+  width: 33%;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .nav-bar a {
   padding: 1px 7px 2px;
   background-color: white;
@@ -17,4 +24,12 @@
   border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
   text-decoration: none;
   color: black;
+}
+
+.closed-dropdown {
+  display: none;
+}
+
+.open-dropdown {
+  position: absolute;
 }
