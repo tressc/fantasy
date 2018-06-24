@@ -19,7 +19,14 @@ const msp = (state) => {
   hasUser = stateMemberships.length >= userMemberships.length;
   pendingIds = state.entities.users[currentUser].pending_ids;
   pendings = pendingIds.map(id => {
-    return state.entities.memberships[id];
+    const membership = state.entities.memberships[id];
+    const campaign = state.entities.campaign;
+    return {
+      id: membership.id,
+      name: campaign.title,
+      // TODO: get gm_name from campaign
+      // gm: campaign.gm_name
+    };
   });
   return {
     currentUser,
