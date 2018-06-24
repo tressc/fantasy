@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import onClickOutside from 'react-onclickoutside';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -8,6 +9,16 @@ class Nav extends React.Component {
       dropdown: 'closed-dropdown'
     };
     this.changeDropClass = this.changeDropClass.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.fetchUser(this.props.currentUser);
+  }
+
+  handleClickOutside(e) {
+    if (this.state.dropdown === 'open-dropdown') {
+      this.changeDropClass();
+    }
   }
 
   changeDropClass() {
@@ -20,19 +31,21 @@ class Nav extends React.Component {
 
   render() {
     let dropdown;
-    if (this.props.pendings.length === 0) {
-      dropdown = <div>no mail at this time</div>;
-    } else {
-      this.props.pendings.map(membership => {
-        return (
-          <div key={ membership.id }>
-            <span>campaign name</span>
-            <span>gm name</span>
-            <button>approve</button>
-            <button>reject</button>
-          </div>
-        );
-      });
+    if (this.props.hasUser) {
+      if (this.props.pendings.length === 0) {
+        dropdown = <div>no mail at this time</div>;
+        } else {
+          dropdown = this.props.pendings.map(membership => {
+            return (
+              <div key={ membership.id }>
+                <span>campaign name</span>
+                <span>gm name</span>
+                <button>approve</button>
+                <button>reject</button>
+              </div>
+            );
+          });
+        }
     }
 
     const profileId = this.props.currentUser;
@@ -66,4 +79,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default onClickOutside(Nav);
