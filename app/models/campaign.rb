@@ -1,5 +1,5 @@
 class Campaign < ApplicationRecord
-  validates :title, :gm_id, presence: true
+  validates :title, :gm_id, :gm_name, presence: true
 
   belongs_to :gm,
     class_name: :User,
