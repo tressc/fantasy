@@ -10,6 +10,7 @@ class Nav extends React.Component {
     };
     this.changeDropClass = this.changeDropClass.bind(this);
     this.handleChoice = this.handleChoice.bind(this);
+    this.handleMove = this.handleMove.bind(this);
   }
 
   componentWillMount() {
@@ -17,6 +18,12 @@ class Nav extends React.Component {
   }
 
   handleClickOutside(e) {
+    if (this.state.dropdown === 'open-dropdown') {
+      this.changeDropClass();
+    }
+  }
+
+  handleMove() {
     if (this.state.dropdown === 'open-dropdown') {
       this.changeDropClass();
     }
@@ -72,10 +79,10 @@ class Nav extends React.Component {
       <div className='nav-bar'>
         <div className='nav-left'>
           <div>
-            <a href='/#/'>home</a>
+            <a href='/#/' onClick={ this.handleMove }>home</a>
           </div>
           <div>
-            <a href={`/#/users/${profileId}`}>profile</a>
+            <a href={`/#/users/${profileId}`} onClick={ this.handleMove }>profile</a>
           </div>
           <div>
             <button
