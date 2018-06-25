@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.currentUser];
   const campaignId = ownProps.match.params.id;
   const campaign = state.entities.campaigns[campaignId];
-  const validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
+  let validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
     currentUser.run_campaign_ids.includes(parseInt(campaignId));
   const hasCampaign = campaign ? true : false;
   const memberships = state.entities.memberships;
@@ -29,6 +29,9 @@ const msp = (state, ownProps) => {
     }
     if (campaign.pending_player_ids.includes(currentUser.id)) {
       isPendingPlayer = true;
+    }
+    if (isPendingPlayer) {
+      validUser = true;
     }
   }
   return {

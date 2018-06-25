@@ -55,9 +55,14 @@ class Nav extends React.Component {
         } else {
           dropdown = this.props.pendings.map(p => {
             return (
-              <div key={ p.id }>
-                <span>{ p.name }</span>
-                <span>{ p.gm }</span>
+              <div key={ p.membershipId }>
+                <p>
+                  <span>{ p.gm }</span> has invited you to join their game,
+                    <a
+                      href={`/#/campaigns/${p.campaignId}`}
+                      onClick={ this.handleMove }
+                      >{ p.name }</a>.
+                </p>
                 <button onClick={
                   this.handleChoice('approve', p.membershipId)
                 }>
