@@ -34,13 +34,24 @@ class Campaign extends React.Component {
       redirect = <Redirect to='/' />;
     }
 
+    let userSearch;
+    if (this.props.isGm) {
+      userSearch =
+      <div>
+        Invite more players:
+        <UserSearchContainer campId={id}/>
+      </div>;
+    }
+
     let title;
     let description;
     let id;
+    let gm;
     if (this.props.hasCampaign) {
       title = this.props.campaign.title;
       description = this.props.campaign.description;
       id = this.props.campaign.id;
+      gm = this.props.campaign.gm_name;
     }
 
     let leaveCampaign;
@@ -54,16 +65,21 @@ class Campaign extends React.Component {
 
 
     return (
-      <div>
-        { redirect }
+      <div className="campaign">
         <div>
-          { title }
-        </div>
-        <div>
-          { description }
+          { redirect }
+          <div className="campaign-title">
+            { title }
+          </div>
+          <div className="campaign-gm">
+            run by: { gm }
+          </div>
+          <div className="campaign-description">
+            { description }
+          </div>
         </div>
         { leaveCampaign }
-        <UserSearchContainer campId={id}/>
+        { userSearch }
       </div>
     );
   }

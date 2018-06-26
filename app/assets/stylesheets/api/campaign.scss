@@ -1,0 +1,18 @@
+.campaign {
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 5%;
+}
+
+.campaign-title {
+  font-size: 20px;
+}
+
+.campaign-gm {
+  font-size: 10px;
+}
+
+.campaign button:hover {
+  color: skyblue;
+  cursor: pointer;
+}

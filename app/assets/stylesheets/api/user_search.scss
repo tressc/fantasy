@@ -2,6 +2,22 @@
   display: none;
 }
 
+.search-user {
+  display: flex;
+  justify-content: space-between;
+  width: 164px;
+  padding: 3px 0 3px 6px;
+}
+
 .search-user:hover {
-  background-color: blue;
+  background-color: skyblue;
+}
+
+.search-user button {
+  margin-right: 3px;
+}
+
+.search-user button:hover {
+  color: skyblue;
+  cursor: pointer;
 }

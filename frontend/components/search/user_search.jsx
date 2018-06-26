@@ -55,9 +55,14 @@ class UserSearch extends React.Component {
         <div
           key={user.id}
           className="search-user"
-          onClick={this.handleChoice(user.id, this.props.campId)}
         >
-          { user.username }
+          <span>
+            { user.username }
+          </span>
+          <button
+            onClick={this.handleChoice(user.id, this.props.campId)}
+            >invite
+          </button>
         </div>
       );
     });
