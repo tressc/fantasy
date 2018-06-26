@@ -49,10 +49,21 @@ class Nav extends React.Component {
 
   render() {
     let dropdown;
+    let mailCount;
     if (this.props.hasUser) {
       if (this.props.pendings.length === 0) {
         dropdown = <div>no mail at this time</div>;
         } else {
+          let num = this.props.pendings.length;
+          if (num > 99) {
+            num = 99;
+          }
+          mailCount =
+          <div className='nav-mail-count'>
+            <span>
+              { num }
+            </span>
+          </div>;
           dropdown = this.props.pendings.map(p => {
             return (
               <div key={ p.membershipId }>
@@ -81,7 +92,7 @@ class Nav extends React.Component {
 
     const profileId = this.props.currentUser;
     return (
-      <div className='nav-bar'>
+      <div className='nav-bar' onClick={ this.handleMove }>
         <div className='nav-left'>
           <div>
             <a href='/#/' onClick={ this.handleMove }>home</a>
@@ -92,8 +103,10 @@ class Nav extends React.Component {
           <div>
             <button
               onClick={ this.changeDropClass }
+              className='nav-mail'
               >
               mail
+              { mailCount }
             </button>
             <div className={ this.state.dropdown }>
               { dropdown }

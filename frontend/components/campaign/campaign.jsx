@@ -39,7 +39,7 @@ class Campaign extends React.Component {
       userSearch =
       <div>
         Invite more players:
-        <UserSearchContainer campId={id}/>
+        <UserSearchContainer campId={ this.props.campaignId }/>
       </div>;
     }
 

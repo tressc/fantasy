@@ -42,7 +42,8 @@ const msp = (state, ownProps) => {
     memberships,
     isGm,
     isActivePlayer,
-    isPendingPlayer
+    isPendingPlayer,
+    campaignId
   };
 };
 
