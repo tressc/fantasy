@@ -1,13 +1,10 @@
 .nav-bar {
-  min-height: 10%;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #d8d8d8;
-}
-
-.nav-bar div {
-  margin: 0 5%;
+  padding: 0 5%;
 }
 
 .nav-left {
@@ -15,6 +12,10 @@
   width: 33%;
   justify-content: space-around;
   align-items: center;
+}
+
+.nav-left-home, .nav-left-profile {
+  margin-right: 5%;
 }
 
 .nav-bar a {
@@ -32,6 +33,11 @@
 
 .open-dropdown {
   position: absolute;
+  width: 150px;
+}
+
+.dropdown-item {
+  background-color: skyblue;
 }
 
 .nav-bar a:hover {
@@ -45,6 +51,10 @@
 }
 
 .nav-mail {
+  position: relative;
+}
+
+.nav-mail-button {
   display: flex;
   position: relative;
 }
@@ -64,8 +74,15 @@
   font-size: 65%;
 }
 
-
-
 .nav-mail-count:hover {
   cursor: default;
+}
+
+.nav-mail-triangle {
+  margin-left: 15px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid skyblue;
 }

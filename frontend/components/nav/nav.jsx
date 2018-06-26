@@ -66,14 +66,14 @@ class Nav extends React.Component {
           </div>;
           dropdown = this.props.pendings.map(p => {
             return (
-              <div key={ p.membershipId }>
-                <p>
+              <div key={ p.membershipId } className='dropdown-item'>
+                <div>
                   <span>{ p.gm }</span> has invited you to join their game,
                     <a
                       href={`/#/campaigns/${p.campaignId}`}
                       onClick={ this.handleMove }
                       >{ p.name }</a>.
-                </p>
+                </div>
                 <button onClick={
                   this.handleChoice('approve', p.membershipId)
                 }>
@@ -94,21 +94,22 @@ class Nav extends React.Component {
     return (
       <div className='nav-bar' onClick={ this.handleMove }>
         <div className='nav-left'>
-          <div>
+          <div className='nav-left-home'>
             <a href='/#/' onClick={ this.handleMove }>home</a>
           </div>
-          <div>
+          <div className='nav-left-profile'>
             <a href={`/#/users/${profileId}`} onClick={ this.handleMove }>profile</a>
           </div>
-          <div>
+          <div className='nav-mail'>
             <button
               onClick={ this.changeDropClass }
-              className='nav-mail'
+              className='nav-mail-button'
               >
               mail
               { mailCount }
             </button>
             <div className={ this.state.dropdown }>
+              <div className='nav-mail-triangle'></div>
               { dropdown }
             </div>
           </div>

@@ -39,9 +39,11 @@ class Profile extends React.Component {
     }
 
     return (
-      <div>
+      <div className='profile'>
         { redirect }
-        <h1>{this.props.currentUser.username + '\'s profile'}</h1>
+        <div className='profile-name'>
+          { this.props.currentUser.username }
+        </div>
         <div className='profile-home'>
           <div>
             <span>game master of:</span>
