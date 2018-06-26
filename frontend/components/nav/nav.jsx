@@ -52,7 +52,7 @@ class Nav extends React.Component {
     let mailCount;
     if (this.props.hasUser) {
       if (this.props.pendings.length === 0) {
-        dropdown = <div>no mail at this time</div>;
+        dropdown = <div className='dropdown-item'>no mail at this time</div>;
         } else {
           let num = this.props.pendings.length;
           if (num > 99) {

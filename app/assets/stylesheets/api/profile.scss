@@ -8,6 +8,14 @@
 
 .profile-home {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 2% 8%;
+}
+
+.profile-home-list {
+  margin-right: 100px;
+}
+
+.profile-home-list li {
+  margin-left: 10px;
 }

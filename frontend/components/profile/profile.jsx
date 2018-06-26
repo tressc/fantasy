@@ -45,7 +45,7 @@ class Profile extends React.Component {
           { this.props.currentUser.username }
         </div>
         <div className='profile-home'>
-          <div>
+          <div className='profile-home-list'>
             <span>game master of:</span>
             <ul>
               { gmOf }
@@ -54,7 +54,7 @@ class Profile extends React.Component {
               new campaign
             </button>
           </div>
-          <div>
+          <div className='profile-home-list'>
             <span>player in:</span>
             <ul>
               { playerIn }
