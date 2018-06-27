@@ -101,13 +101,13 @@ class Nav extends React.Component {
             <a href={`/#/users/${profileId}`} onClick={ this.handleMove }>profile</a>
           </div>
           <div className='nav-mail'>
-            <button
+            <a
               onClick={ this.changeDropClass }
               className='nav-mail-button'
               >
               mail
               { mailCount }
-            </button>
+            </a>
             <div className={ this.state.dropdown }>
               <div className='nav-mail-triangle'></div>
               { dropdown }
@@ -115,9 +115,9 @@ class Nav extends React.Component {
           </div>
         </div>
         <div className='nav-right'>
-          <button onClick={this.props.logout}>
+          <a onClick={this.props.logout}>
             log out
-          </button>
+          </a>
         </div>
       </div>
     );

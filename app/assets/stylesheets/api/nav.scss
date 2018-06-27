@@ -19,12 +19,7 @@
 }
 
 .nav-bar a {
-  padding: 1px 7px 2px;
-  background-color: white;
-  border: 1px solid;
-  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
   text-decoration: none;
-  color: black;
 }
 
 .closed-dropdown {
@@ -61,8 +56,8 @@
 
 .nav-mail-count {
   position: absolute;
-  top: -4px;
-  right: -10px;
+  top: 1px;
+  left: 32px;
   background-color: red;
   color: white;
   width: 15px;
@@ -75,7 +70,7 @@
 }
 
 .nav-mail-count:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 .nav-mail-triangle {
