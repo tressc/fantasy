@@ -13,6 +13,15 @@ class UserSearch extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.openDropClass = this.openDropClass.bind(this);
     this.closeDropClass = this.closeDropClass.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
+  }
+
+  componentWillMount() {
+    this.clearErrors();
+  }
+
+  clearErrors() {
+    this.props.removeMembershipErrors();
   }
 
   handleClickOutside(e) {
@@ -68,17 +77,33 @@ class UserSearch extends React.Component {
       );
     });
 
+    let errors;
+    if (this.props.errors.length > 0) {
+      errors = this.props.errors.map(e => {
+        return (
+          <div
+            key={ this.props.errors.indexOf(e) }
+            className='search-errors'
+            >
+            { e }
+          </div>
+        );
+      });
+    }
+
     return (
       <div>
         <input
+          onFocus={ this.clearErrors }
           onChange={ this.handleChange }
           type='text'
           placeholder='search'
           value={ this.state.searchText }
         />
-      <div className={ this.state.dropdown }>
+        <div className={ this.state.dropdown }>
           { dropDown }
         </div>
+        { errors }
       </div>
     );
   }

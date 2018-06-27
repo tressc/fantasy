@@ -68,7 +68,7 @@ class Nav extends React.Component {
             return (
               <div key={ p.membershipId } className='dropdown-item'>
                 <div>
-                  { p.gm } has invited you to join their game,{ " "}
+                  { p.gm } has invited you to join their game,{ " " }
                   <a
                     href={`/#/campaigns/${p.campaignId}`}
                     onClick={ this.handleMove }

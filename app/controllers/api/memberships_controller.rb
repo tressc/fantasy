@@ -7,7 +7,7 @@ class Api::MembershipsController < ApplicationController
     if @membership.save
       render :show
     else
-      render json: @membership.errors.full_messages, status: 403
+      render json: ["cannot add that user"], status: 403
     end
   end
 
