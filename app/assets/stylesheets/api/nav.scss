@@ -10,16 +10,21 @@
 .nav-left {
   display: flex;
   width: 33%;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .nav-left-home, .nav-left-profile {
-  margin-right: 5%;
+  margin-right: 7.5%;
 }
 
 .nav-bar a {
   text-decoration: none;
+}
+
+.nav-bar a:hover {
+  cursor: pointer;
+  color: skyblue;
 }
 
 .closed-dropdown {
@@ -42,11 +47,6 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 3px;
-}
-
-.nav-bar a:hover {
-  cursor: pointer;
-  color: skyblue;
 }
 
 .nav-bar button:hover {
