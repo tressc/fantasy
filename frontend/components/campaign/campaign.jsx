@@ -19,7 +19,6 @@ class Campaign extends React.Component {
   changeDropdown(id) {
 
     return () => {
-
       if (!this.state[id]) {
         this.state[id] = "campaign-dropdown-closed";
       }
@@ -41,31 +40,44 @@ class Campaign extends React.Component {
     return () => {
       let membershipId;
       const memKeys = Object.keys(this.props.memberships);
-      memKeys.forEach(id => {
+      for (let i = 0; i < memKeys.length; i++) {
+        const id = Number(memKeys[i]);
         const m = this.props.memberships[id];
-        if (m.campaign_id === campId && m.player_id === playerId) {
-          membershipId = id;
-        }
-      });
+        if (m.campaign_id === Number(campId) &&
+          m.player_id === playerId) {
+            membershipId = id;
+          }
+      }
       this.props.destroyMembership(membershipId);
     };
   }
 
   removePlayer(id) {
+    if (!this.state[id]) {
+      this.state[id] = "campaign-dropdown-closed";
+    }
     if (this.props.isGm) {
       return (
+
         <div
           className="remove-player-triangle"
           onClick={ this.changeDropdown(id) }
           >
+          <div
+            className={ this.state[id] }
+          >
+            <a
+              onClick={ this.endMembership(this.props.campaignId, id)}
+            >
+              remove
+            </a>
+          </div>
         </div>
       );
     }
   }
 
   render() {
-    console.log(this.state);
-
     let redirect;
     if (this.props.validUser === false) {
       redirect = <Redirect to='/' />;

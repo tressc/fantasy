@@ -40,9 +40,24 @@
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   margin-top: 4px;
+  position: relative;
 }
 
 .remove-player-triangle:hover {
   border-top: 4px solid skyblue;
   cursor: pointer;
+}
+
+.campaign-dropdown-closed {
+  display: none;
+}
+
+.campaign-dropdown-open {
+  position: absolute;
+  top: 0px;
+  right: -3px;
+}
+
+.campaign-dropdown-open a:hover {
+  color: skyblue;
 }

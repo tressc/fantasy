@@ -54,7 +54,6 @@ class UserSearch extends React.Component {
   }
 
   render() {
-    console.log(this.props.campId);
     let dropDown;
     if (this.state.searchText === '') {
       dropDown = <div/>;
