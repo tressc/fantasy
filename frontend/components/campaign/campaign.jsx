@@ -5,8 +5,7 @@ import UserSearchContainer from '../search/user_search_container';
 class Campaign extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
     this.endMembership = this.endMembership.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.changeDropdown = this.changeDropdown.bind(this);
@@ -18,8 +17,13 @@ class Campaign extends React.Component {
   }
 
   changeDropdown(id) {
+
     return () => {
-      if (this.state[id].dropdown === "campaign-dropdown-closed") {
+
+      if (!this.state[id]) {
+        this.state[id] = "campaign-dropdown-closed";
+      }
+      if (this.state[id] === "campaign-dropdown-closed") {
         this.setState({[id]: "campaign-dropdown-open"});
       } else {
         this.setState({[id]: "campaign-dropdown-closed"});
@@ -60,6 +64,8 @@ class Campaign extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+
     let redirect;
     if (this.props.validUser === false) {
       redirect = <Redirect to='/' />;
@@ -87,11 +93,6 @@ class Campaign extends React.Component {
 
     let players;
     if (this.props.activePlayers.length > 0) {
-      this.props.activePlayers.forEach(p => {
-        debugger
-         this.state[p.id] = "campaign-dropdown-closed";
-        debugger
-      });
       players = this.props.activePlayers.map(p => {
         return (
           <div
@@ -113,7 +114,6 @@ class Campaign extends React.Component {
         leave campaign
       </button>;
     }
-
 
     return (
       <div className="campaign">

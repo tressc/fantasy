@@ -57,7 +57,7 @@ const msp = (state, ownProps) => {
     isActivePlayer,
     isPendingPlayer,
     campaignId,
-    activePlayers
+    activePlayers,
   };
 };
 
