@@ -68,22 +68,24 @@ class Nav extends React.Component {
             return (
               <div key={ p.membershipId } className='dropdown-item'>
                 <div>
-                  <span>{ p.gm }</span> has invited you to join their game,
-                    <a
-                      href={`/#/campaigns/${p.campaignId}`}
-                      onClick={ this.handleMove }
-                      >{ p.name }</a>.
+                  { p.gm } has invited you to join their game,{ " "}
+                  <a
+                    href={`/#/campaigns/${p.campaignId}`}
+                    onClick={ this.handleMove }
+                    >{ p.name }</a>.
                 </div>
-                <button onClick={
-                  this.handleChoice('approve', p.membershipId)
-                }>
-                  approve
-                </button>
-                <button onClick={
-                  this.handleChoice('reject', p.membershipId)
-                }>
-                  reject
-                </button>
+                <div className='dropdown-item-buttons'>
+                  <button onClick={
+                      this.handleChoice('approve', p.membershipId)
+                    }>
+                    approve
+                  </button>
+                  <button onClick={
+                      this.handleChoice('reject', p.membershipId)
+                    }>
+                    reject
+                  </button>
+                </div>
               </div>
             );
           });
