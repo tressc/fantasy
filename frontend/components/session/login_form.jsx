@@ -42,6 +42,10 @@ class LoginForm extends React.Component {
     return (
       <div className='session'>
         <div className='session-box'>
+          <div className='session-img'>
+            <img className='session-rune outer' src={ window.rune }/>
+            <img className='session-rune inner' src={ window.rune }/>
+          </div>
           <form onSubmit={this.handleSubmit} className='session-box-form'>
             <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
             <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
