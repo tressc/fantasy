@@ -24,6 +24,10 @@
   display: flex;
 }
 
+.pending {
+  color: red;
+}
+
 .campaign button {
   height: 25px;
 }
@@ -54,7 +58,7 @@
 
 .campaign-dropdown-open {
   position: absolute;
-  top: 0px;
+  top: 2px;
   right: -3px;
 }
 

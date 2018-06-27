@@ -104,12 +104,27 @@ class Campaign extends React.Component {
     }
 
     let players;
+    let pendingPlayers;
     if (this.props.activePlayers.length > 0) {
       players = this.props.activePlayers.map(p => {
         return (
           <div
             key={ p.id }
             className="campaign-player"
+            >
+            { p.username }
+            { this.removePlayer(p.id) }
+          </div>
+        );
+      });
+    }
+    if (this.props.pendingPlayers.length > 0) {
+      console.log("hello");
+      pendingPlayers = this.props.pendingPlayers.map(p => {
+        return (
+          <div
+            key={ p.id }
+            className="campaign-player pending"
             >
             { p.username }
             { this.removePlayer(p.id) }
@@ -142,6 +157,7 @@ class Campaign extends React.Component {
               players:
             </div>
             { players }
+            { pendingPlayers }
           </div>
           <div className="campaign-description">
             { description }

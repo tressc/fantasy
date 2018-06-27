@@ -21,8 +21,12 @@ const msp = (state, ownProps) => {
   let isActivePlayer;
   let isPendingPlayer;
   let activePlayers = [];
+  let pendingPlayers = [];
   if (hasCampaign) {
-    campaign.active_player_ids.forEach(id => {
+    const allUsers = campaign.active_player_ids.concat(
+      campaign.pending_player_ids
+    );
+    allUsers.forEach(id => {
       if (!Object.keys(state.entities.users).includes(String(id))) {
         hasUsers = false;
         return;
@@ -46,6 +50,9 @@ const msp = (state, ownProps) => {
     activePlayers = campaign.active_player_ids.map(id => {
       return state.entities.users[id];
     });
+    pendingPlayers = campaign.pending_player_ids.map(id => {
+      return state.entities.users[id];
+    });
   }
   return {
     currentUser,
@@ -58,6 +65,7 @@ const msp = (state, ownProps) => {
     isPendingPlayer,
     campaignId,
     activePlayers,
+    pendingPlayers
   };
 };
 
