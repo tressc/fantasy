@@ -15,12 +15,20 @@ const msp = (state, ownProps) => {
   let validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
     currentUser.run_campaign_ids.includes(parseInt(campaignId));
   const hasCampaign = campaign ? true : false;
+  let hasUsers = false;
   const memberships = state.entities.memberships;
   let isGm;
   let isActivePlayer;
   let isPendingPlayer;
+  let activePlayers = [];
   if (hasCampaign) {
-    // const allPlayers = campaign.active_player_ids.concat(campaign.pending_player_ids);
+    campaign.active_player_ids.forEach(id => {
+      if (!Object.keys(state.entities.users).includes(String(id))) {
+        hasUsers = false;
+        return;
+      }
+      hasUsers = true;
+    });
     if (campaign.gm_id === currentUser.id) {
       isGm = true;
     }
@@ -34,6 +42,11 @@ const msp = (state, ownProps) => {
       validUser = true;
     }
   }
+  if (hasUsers) {
+    activePlayers = campaign.active_player_ids.map(id => {
+      return state.entities.users[id];
+    });
+  }
   return {
     currentUser,
     campaign,
@@ -43,7 +56,8 @@ const msp = (state, ownProps) => {
     isGm,
     isActivePlayer,
     isPendingPlayer,
-    campaignId
+    campaignId,
+    activePlayers
   };
 };
 
