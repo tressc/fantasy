@@ -4,10 +4,18 @@ import { Redirect, Link } from 'react-router-dom';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.id);
+  }
+
+  openModal(val) {
+    return () => {
+      this.props.removeErrors();
+      this.props.openModal(val);
+    };
   }
 
   render() {
@@ -50,7 +58,7 @@ class Profile extends React.Component {
             <ul>
               { gmOf }
             </ul>
-            <button onClick={() => this.props.openModal('campaign')}>
+            <button onClick={this.openModal('campaign')}>
               new campaign
             </button>
           </div>

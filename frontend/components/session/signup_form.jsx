@@ -51,10 +51,28 @@ class SignUpForm extends React.Component {
             <img className='session-rune outer' src={ window.rune }/>
             <img className='session-rune inner' src={ window.rune }/>
           </div>
-          <form onSubmit={this.handleSubmit} className='session-box-form'>
-            <input placeholder='username' type='text' value={this.state.username} onChange={this.update('username')}></input>
-            <input placeholder='password' type='password' value={this.state.password} onChange={this.update('password')}></input>
-            <input type='submit' value='sign up' className='submit'></input>
+          <form
+            onSubmit={this.handleSubmit}
+            className='session-box-form'
+          >
+            <input
+              placeholder='username'
+              type='text'
+              value={this.state.username}
+              onChange={this.update('username')}
+              maxLength='15'
+            />
+            <input
+              placeholder='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.update('password')}
+            />
+            <input
+              type='submit'
+              value='sign up'
+              className='submit'
+            />
           </form>
           <div className='change-auth'>
             <span>already have an account?</span>

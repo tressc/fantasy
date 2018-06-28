@@ -33,7 +33,7 @@ class CampaignForm extends React.Component {
 
     const errors = this.props.errors.map(error => {
       return (
-        <li>{ error.toLowerCase() }</li>
+        <div>{ error.toLowerCase() }</div>
       );
     });
 
@@ -44,15 +44,27 @@ class CampaignForm extends React.Component {
           <button onClick={this.props.closeModal}>cancel</button>
         </div>
         <form onSubmit={this.handleSubmit} className='campaign-form-fields'>
-          <input placeholder='campaign title' type='text' value={this.state.title} onChange={this.update('title')}></input>
-          <textarea placeholder='brief description of campaign' type='text' maxLength='75' rows='5' value={this.state.description} onChange={this.update('description')}></textarea>
+          <input
+            placeholder='campaign title'
+            type='text' value={this.state.title}
+            onChange={this.update('title')}
+            maxLength='20'
+          />
+          <textarea
+            placeholder='brief description of campaign'
+            type='text'
+            maxLength='75'
+            rows='5'
+            value={this.state.description}
+            onChange={this.update('description')}
+          />
         </form>
         <div className='campaign-form-create'>
           <button onClick={this.handleSubmit}>create</button>
         </div>
-        <ul>
+        <div className='campaign-form-errors'>
           { errors[0] }
-        </ul>
+        </div>
       </div>
     );
   }
