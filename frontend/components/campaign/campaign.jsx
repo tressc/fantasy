@@ -119,7 +119,6 @@ class Campaign extends React.Component {
       });
     }
     if (this.props.pendingPlayers.length > 0) {
-      console.log("hello");
       pendingPlayers = this.props.pendingPlayers.map(p => {
         return (
           <div

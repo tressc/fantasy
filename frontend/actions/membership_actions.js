@@ -6,14 +6,15 @@ export const RECEIVE_MEMBERSHIP_ERRORS = 'RECEIVE_MEMBERSHIP_ERRORS';
 export const REMOVE_MEMBERSHIP_ERRORS = 'REMOVE_MEMBERSHIP_ERRORS';
 export const UPDATE_MEMBERSHIP = 'UPDATE_MEMBERSHIP';
 
-const receiveMembership = (membership) => {
+const receiveMembership = ({ membership, user }) => {
   return {
     type: RECEIVE_MEMBERSHIP,
-    membership
+    membership,
+    user
   };
 };
 
-const updateMembership = (membership) => {
+const updateMembership = ({ membership }) => {
   return {
     type: UPDATE_MEMBERSHIP,
     membership
@@ -41,8 +42,8 @@ export const removeMembershipErrors = () => {
 };
 
 export const createMembership = (membership) => (dispatch) => {
-  return APIUtil.newMembership(membership).then(m => {
-    dispatch(receiveMembership(m));
+  return APIUtil.newMembership(membership).then(payload => {
+    dispatch(receiveMembership(payload));
   }, errors => {
     dispatch(receiveErrors(errors.responseJSON));
   });

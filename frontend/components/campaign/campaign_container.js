@@ -15,14 +15,16 @@ const msp = (state, ownProps) => {
   let validUser = currentUser.campaign_ids.includes(parseInt(campaignId)) ||
     currentUser.run_campaign_ids.includes(parseInt(campaignId));
   const hasCampaign = campaign ? true : false;
-  let hasUsers = false;
   const memberships = state.entities.memberships;
+  let hasUsers = false;
+  let hasMemberships = false;
   let isGm;
   let isActivePlayer;
   let isPendingPlayer;
   let activePlayers = [];
   let pendingPlayers = [];
   if (hasCampaign) {
+
     const allUsers = campaign.active_player_ids.concat(
       campaign.pending_player_ids
     );
@@ -65,7 +67,7 @@ const msp = (state, ownProps) => {
     isPendingPlayer,
     campaignId,
     activePlayers,
-    pendingPlayers
+    pendingPlayers,
   };
 };
 

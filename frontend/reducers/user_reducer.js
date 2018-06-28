@@ -30,8 +30,9 @@ const userReducer = (state = {}, action) => {
           pendings.push(action.membership.id);
         }
         return merge({}, state, {[action.membership.player_id]: {pending_ids: pendings}});
+      } else {
+        return merge({}, state, {[action.user.id]: action.user});
       }
-      return state;
     case REMOVE_MEMBERSHIP:
       newState = merge({}, state);
       oldPlayer = newState[action.membership.player_id];
