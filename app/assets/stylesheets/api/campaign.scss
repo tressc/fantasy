@@ -7,20 +7,15 @@
 }
 
 .campaign-title {
-  font-size: 20px;
-}
-
-.campaign-gm {
-  font-size: 10px;
+  font-size: 40px;
 }
 
 .campaign-players {
-  font-size: 10px;
   display: flex;
 }
 
 .campaign-player {
-  margin-left: 6px;
+  margin-left: 12px;
   display: flex;
 }
 
@@ -43,7 +38,8 @@
   border-top: 4px solid black;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  margin-top: 4px;
+  margin-top: 9px;
+  margin-left: 3px;
   position: relative;
 }
 
@@ -58,7 +54,7 @@
 
 .campaign-dropdown-open {
   position: absolute;
-  top: 2px;
+  top: 5px;
   right: -3px;
 }
 

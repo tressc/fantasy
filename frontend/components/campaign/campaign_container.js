@@ -24,17 +24,19 @@ const msp = (state, ownProps) => {
   let activePlayers = [];
   let pendingPlayers = [];
   if (hasCampaign) {
+    hasUsers = true;
 
     const allUsers = campaign.active_player_ids.concat(
       campaign.pending_player_ids
     );
-    allUsers.forEach(id => {
-      if (!Object.keys(state.entities.users).includes(String(id))) {
+
+    for (let i = 0; i < allUsers.length; i++) {
+      const id = allUsers[i];
+      if (!(id in state.entities.users)) {
         hasUsers = false;
-        return;
       }
-      hasUsers = true;
-    });
+    }
+
     if (campaign.gm_id === currentUser.id) {
       isGm = true;
     }
@@ -68,6 +70,7 @@ const msp = (state, ownProps) => {
     campaignId,
     activePlayers,
     pendingPlayers,
+    hasUsers
   };
 };
 

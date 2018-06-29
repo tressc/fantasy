@@ -13,7 +13,7 @@
 }
 
 .session-img {
-  margin-bottom: 20px;
+  margin-bottom: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,19 +31,19 @@
 
 .outer {
   position: relative;
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
 }
 
 .inner {
   position: absolute;
-  height: 71px;
+  height: 142px;
   animation: spin 50s reverse infinite;
 }
 
 .session-box {
   position: absolute;
-  width: 30%;
+  width: 250px;
   display: flex;
   flex-direction: column;
   // align-items: center;
