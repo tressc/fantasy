@@ -25,3 +25,21 @@ json.memberships do
     end
   end
 end
+
+json.folders do
+  @campaign.folders.each do |folder|
+    json.set! folder.id do
+      json.partial! 'api/folders/folder', folder: folder
+    end
+  end
+end
+
+json.pages do
+  @campaign.folders.each do |folder|
+    folder.pages.each do |page|
+      json.set! page.id do
+        json.partial! 'api/pages/page', page: page
+      end
+    end
+  end
+end

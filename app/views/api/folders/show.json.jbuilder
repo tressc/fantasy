@@ -1,2 +1,11 @@
-<h1>Api::Folders#show</h1>
-<p>Find me in app/views/api/folders/show.html.erb</p>
+json.folder do
+  json.partial! 'api/folders/folder', folder: @folder
+end
+
+json.pages do
+  @folder.pages.each do |page|
+    json.set! page.id do
+      json.partial! 'api/pages/page', page: page
+    end
+  end
+end

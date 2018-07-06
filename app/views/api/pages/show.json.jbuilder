@@ -1,2 +1,3 @@
-<h1>Api::Pages#show</h1>
-<p>Find me in app/views/api/pages/show.html.erb</p>
+json.page do
+  json.partial! 'api/pages/page', page: @page
+end

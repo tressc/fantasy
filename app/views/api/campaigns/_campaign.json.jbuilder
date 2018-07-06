@@ -5,4 +5,5 @@ json.extract! campaign,
   :gm_id,
   :active_player_ids,
   :pending_player_ids,
-  :gm_name
+  :gm_name,
+  :folder_ids
