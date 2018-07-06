@@ -15,6 +15,11 @@ class Campaign < ApplicationRecord
     through: :memberships,
     source: :player
 
+  has_many :folders,
+    class_name: :Folder,
+    foreign_key: :campaign_id,
+    primary_key: :id
+
   def approved_memberships
     self.memberships.where(status: 'APPROVED')
   end
