@@ -20,7 +20,7 @@ class Api::PagesController < ApplicationController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
-    render json: @page
+    render :show
   end
 
   def show

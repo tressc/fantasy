@@ -21,7 +21,7 @@ const receiveErrors = (errors) => {
   };
 };
 
-const removeFolder = (folder) => {
+const removeFolder = ({folder}) => {
   return {
     type: REMOVE_FOLDER,
     folder

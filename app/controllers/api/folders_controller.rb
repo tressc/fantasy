@@ -13,13 +13,13 @@ class Api::FoldersController < ApplicationController
     # TODO does this work?
     @folder.update_attributes(folder_params)
     @folder.save
-    render json: @folder
+    render :show
   end
 
   def destroy
     @folder = Folder.find(params[:id])
     @folder.destroy
-    render json: @folder
+    render :show
   end
 
   def show
