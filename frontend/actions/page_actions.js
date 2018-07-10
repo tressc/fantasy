@@ -4,7 +4,6 @@ export const RECEIVE_PAGE = 'RECEIVE_PAGE';
 export const REMOVE_PAGE = 'REMOVE_PAGE';
 export const RECEIVE_PAGE_ERRORS = 'RECEIVE_PAGE_ERRORS';
 export const REMOVE_PAGE_ERRORS = 'REMOVE_PAGE_ERRORS';
-export const UPDATE_PAGE = 'UPDATE_PAGE';
 
 const receivePage = ({page}) => {
   return {
