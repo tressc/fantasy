@@ -17,13 +17,22 @@ export const removeErrors = () => {
   };
 };
 
-const receiveCampaign = ({ campaign, players, gm, memberships }) => {
+const receiveCampaign = ({
+  campaign,
+  players,
+  gm,
+  memberships,
+  folders,
+  pages
+}) => {
   return {
     type: RECEIVE_CAMPAIGN,
     campaign,
     players,
     gm,
-    memberships
+    memberships,
+    folders,
+    pages
   };
 };
 
