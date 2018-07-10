@@ -4,7 +4,6 @@ export const RECEIVE_FOLDER = 'RECEIVE_FOLDER';
 export const REMOVE_FOLDER = 'REMOVE_FOLDER';
 export const RECEIVE_FOLDER_ERRORS = 'RECEIVE_FOLDER_ERRORS';
 export const REMOVE_FOLDER_ERRORS = 'REMOVE_FOLDER_ERRORS';
-export const UPDATE_FOLDER = 'UPDATE_FOLDER';
 
 const receiveFolder = ({folder, pages}) => {
   return {
