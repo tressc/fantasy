@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import UserSearchContainer from '../search/user_search_container';
+import FolderContainer from '../folder/folder_container';
 
 class Campaign extends React.Component {
   constructor(props) {
@@ -143,6 +144,7 @@ class Campaign extends React.Component {
 
     return (
       <div className="campaign">
+
         <div>
           { redirect }
           <div className="campaign-title">
