@@ -1,10 +1,10 @@
 import {
   RECEIVE_PAGE,
   REMOVE_PAGE
-} from '../../actions/page_actions';
+} from '../actions/page_actions';
 import {
   RECEIVE_CAMPAIGN
-} from '../../actions/campaign_actions';
+} from '../actions/campaign_actions';
 import { merge } from 'lodash';
 
 const pageReducer = (state = {}, action) => {

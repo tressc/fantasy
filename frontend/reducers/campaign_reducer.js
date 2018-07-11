@@ -1,7 +1,14 @@
 import { merge } from 'lodash';
 import { RECEIVE_CAMPAIGN } from '../actions/campaign_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
-import { RECEIVE_MEMBERSHIP, REMOVE_MEMBERSHIP, UPDATE_MEMBERSHIP } from '../actions/membership_actions';
+import {
+  RECEIVE_MEMBERSHIP,
+  REMOVE_MEMBERSHIP,
+  UPDATE_MEMBERSHIP
+} from '../actions/membership_actions';
+import {
+  REMOVE_FOLDER
+} from '../actions/folder_actions';
 
 const campaignReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -45,6 +52,19 @@ const campaignReducer = (state = {}, action) => {
           newState[action.membership.campaign_id].pending_player_ids.splice(index, 1);
         }
         return newState;
+      case REMOVE_FOLDER:
+        newState = merge({}, state);
+        const campaign = newState[action.folder.campaign_id];
+        if (campaign) {
+          const folders = campaign.folder_ids;
+          for (let i = 0; i < folders.length; i++) {
+            if (folders[i] === action.folder.id) {
+              newState[action.folder.campaign_id].folder_ids.splice(i, 1);
+            }
+          }
+          return newState;
+        }
+        return state;
     default:
       return state;
   }

@@ -1,13 +1,13 @@
 import {
   RECEIVE_FOLDER,
   REMOVE_FOLDER
-} from '../../actions/folder_actions';
+} from '../actions/folder_actions';
 import {
   RECEIVE_CAMPAIGN
-} from '../../actions/campaign_actions';
+} from '../actions/campaign_actions';
 import {
   REMOVE_PAGE
-} from '../../actions/page_actions';
+} from '../actions/page_actions';
 import { merge } from 'lodash';
 
 const folderReducer = (state = {}, action) => {
@@ -22,13 +22,17 @@ const folderReducer = (state = {}, action) => {
     case RECEIVE_CAMPAIGN:
       return merge({}, state, action.folders);
     case REMOVE_PAGE:
-      const pages = newState[action.page.folder_id].page_ids;
-      for (let i = 0; i < pages.length; i++) {
-        if (pages[i] === action.page.id) {
-          newState[action.page.folder_id].page_ids.splice(i, 1);
+      const folder = newState[action.page.folder_id];
+      if (folder) {
+        const pages = folder.page_ids;
+        for (let i = 0; i < pages.length; i++) {
+          if (pages[i] === action.page.id) {
+            newState[action.page.folder_id].page_ids.splice(i, 1);
+          }
         }
+        return newState;
       }
-      return newState;
+      return state;
     default:
       return state;
   }
