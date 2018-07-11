@@ -40,7 +40,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return {
     fetchUser: (id) => dispatch(fetchUser(id)),
-    openModal: component => dispatch(openModal(component)),
+    openModal: (component) => dispatch(openModal(component)),
     removeErrors: () => dispatch(removeErrors())
   };
 };

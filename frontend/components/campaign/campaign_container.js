@@ -7,8 +7,8 @@ import {
   removeMembershipErrors
 } from '../../actions/membership_actions';
 import {
-  createFolder
-} from '../../actions/folder_actions';
+  openModal
+} from '../../actions/modal_actions';
 import Campaign from './campaign';
 
 const msp = (state, ownProps) => {
@@ -85,8 +85,7 @@ const mdp = (dispatch) => {
     fetchCampaign: (id) => dispatch(fetchCampaign(id)),
     createMembership: (membership) => dispatch(createMembership(membership)),
     destroyMembership: (id) => dispatch(destroyMembership(id)),
-    removeMembershipErrors: () => dispatch(removeMembershipErrors()),
-    createFolder: (folder) => dispatch(createFolder(folder))
+    removeMembershipErrors: () => dispatch(removeMembershipErrors())
   };
 };
 

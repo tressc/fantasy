@@ -11,6 +11,14 @@ class Campaign extends React.Component {
     this.closeDropdown = this.closeDropdown.bind(this);
     this.changeDropdown = this.changeDropdown.bind(this);
     this.removePlayer = this.removePlayer.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal(val) {
+    return () => {
+      this.props.removeErrors();
+      this.props.openModal(val);
+    };
   }
 
   closeDropdown(id) {
@@ -172,7 +180,9 @@ class Campaign extends React.Component {
           { userSearch }
         </div>
         <div className="campaign-bottom">
-          <button>new chapter</button>
+          <button onClick={this.openModal('folder')}>
+            new chapter
+          </button>
         </div>
       </div>
     );
