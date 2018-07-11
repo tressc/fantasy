@@ -88,7 +88,7 @@ class Campaign extends React.Component {
     if (this.props.isGm) {
       userSearch =
       <div>
-        Invite more players:
+        invite more players:
         <UserSearchContainer campId={ this.props.campaignId }/>
       </div>;
     }
@@ -97,11 +97,15 @@ class Campaign extends React.Component {
     let description;
     let id;
     let gm;
+    let folders;
     if (this.props.hasCampaign) {
       title = this.props.campaign.title;
       description = this.props.campaign.description;
       id = this.props.campaign.id;
       gm = this.props.campaign.gm_name;
+      folders = this.props.folders.map(i => {
+        return <FolderContainer id={i} />;
+      });
     }
 
     let players;
@@ -144,28 +148,32 @@ class Campaign extends React.Component {
 
     return (
       <div className="campaign">
-
-        <div>
-          { redirect }
-          <div className="campaign-title">
-            { title }
-          </div>
-          <div className="campaign-gm">
-            run by: { gm }
-          </div>
-          <div className="campaign-players">
-            <div>
-              players:
+        { redirect }
+        <div className="campaign-top">
+          <div>
+            <div className="campaign-title">
+              { title }
             </div>
-            { players }
-            { pendingPlayers }
+            <div className="campaign-gm">
+              run by: { gm }
+            </div>
+            <div className="campaign-players">
+              <div>
+                players:
+              </div>
+              { players }
+              { pendingPlayers }
+            </div>
+            <div className="campaign-description">
+              { description }
+            </div>
           </div>
-          <div className="campaign-description">
-            { description }
-          </div>
+          { leaveCampaign }
+          { userSearch }
         </div>
-        { leaveCampaign }
-        { userSearch }
+        <div className="campaign-bottom">
+          <button>new chapter</button>
+        </div>
       </div>
     );
   }

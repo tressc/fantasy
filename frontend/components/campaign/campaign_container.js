@@ -6,6 +6,9 @@ import {
   destroyMembership,
   removeMembershipErrors
 } from '../../actions/membership_actions';
+import {
+  createFolder
+} from '../../actions/folder_actions';
 import Campaign from './campaign';
 
 const msp = (state, ownProps) => {
@@ -23,7 +26,9 @@ const msp = (state, ownProps) => {
   let isPendingPlayer;
   let activePlayers = [];
   let pendingPlayers = [];
+  let folders = [];
   if (hasCampaign) {
+    folders = campaign.folder_ids;
     hasUsers = true;
 
     const allUsers = campaign.active_player_ids.concat(
@@ -70,7 +75,8 @@ const msp = (state, ownProps) => {
     campaignId,
     activePlayers,
     pendingPlayers,
-    hasUsers
+    hasUsers,
+    folders
   };
 };
 
@@ -79,7 +85,8 @@ const mdp = (dispatch) => {
     fetchCampaign: (id) => dispatch(fetchCampaign(id)),
     createMembership: (membership) => dispatch(createMembership(membership)),
     destroyMembership: (id) => dispatch(destroyMembership(id)),
-    removeMembershipErrors: () => dispatch(removeMembershipErrors())
+    removeMembershipErrors: () => dispatch(removeMembershipErrors()),
+    createFolder: (folder) => dispatch(createFolder(folder))
   };
 };
 

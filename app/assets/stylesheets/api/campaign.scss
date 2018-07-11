@@ -2,8 +2,14 @@
   background-color: #eee;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 2% 5%;
+}
+
+.campaign-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .campaign-title {
@@ -60,4 +66,8 @@
 
 .campaign-dropdown-open a:hover {
   color: skyblue;
+}
+
+.campaign-bottom {
+  margin-top: 10%;
 }
