@@ -9,6 +9,10 @@ import {
 import {
   openModal
 } from '../../actions/modal_actions';
+import {
+  removeErrors
+} from '../../actions/campaign_actions';
+
 import Campaign from './campaign';
 
 const msp = (state, ownProps) => {
@@ -85,7 +89,9 @@ const mdp = (dispatch) => {
     fetchCampaign: (id) => dispatch(fetchCampaign(id)),
     createMembership: (membership) => dispatch(createMembership(membership)),
     destroyMembership: (id) => dispatch(destroyMembership(id)),
-    removeMembershipErrors: () => dispatch(removeMembershipErrors())
+    removeMembershipErrors: () => dispatch(removeMembershipErrors()),
+    removeErrors: () => dispatch(removeErrors()),
+    openModal: (component) => dispatch(openModal(component))
   };
 };
 

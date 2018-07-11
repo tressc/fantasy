@@ -1,6 +1,6 @@
 import React from 'react';
 
-class FolderForm extends React.component {
+class FolderForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,5 +29,19 @@ class FolderForm extends React.component {
     });
   }
 
-  
+  render() {
+
+    const errors = this.props.errors.map(error => {
+      return (
+        <div>{ error.toLowerCase() }</div>
+      );
+    });
+
+
+    return (
+      <div></div>
+    );
+  }
 }
+
+export default FolderForm;
