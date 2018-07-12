@@ -13,6 +13,7 @@ class FolderForm extends React.Component {
 
   update(field) {
     return (event) => {
+      console.log(event.currentTarget.value);
       this.setState({
         [field]: event.currentTarget.value
       });
@@ -39,7 +40,37 @@ class FolderForm extends React.Component {
 
 
     return (
-      <div></div>
+      <div className='folder-form-box'>
+        <div className='folder-form-cancel'>
+          <button onClick={this.props.closeModal}>
+            cancel
+          </button>
+        </div>
+        <form
+          onSubmit={this.handleSubmit}
+          className='folder-form-fields'
+        >
+          <input
+            type='radio'
+            name='status'
+            value='private'
+            onClick={this.update('status')}
+          />
+          <input
+            type='radio'
+            name='status'
+            value='public'
+            onClick={this.update('status')}
+          />
+          <input
+            placeholder='chapter title'
+            type='text'
+            value={this.state.title}
+            onChange={this.update('title')}
+            maxLength='20'
+          />
+        </form>
+      </div>
     );
   }
 }
